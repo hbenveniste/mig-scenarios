@@ -10,10 +10,10 @@ mig0_ssp2 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/mig0_SSP2.csv")) |>
 ssp2 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/SSP2.csv")) |> DataFrame
 mig0_ssp3 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/mig0_SSP3.csv")) |> DataFrame
 ssp3 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/SSP3.csv")) |> DataFrame
-mig0_ssp4 = CSV.File(joinpath(@__DIR__, "../../Documents/YSSP_IIASA/data/pop_samirkc/mig0_SSP4.csv")) |> DataFrame   # file too large for Github
-ssp4 = CSV.File(joinpath(@__DIR__, "../../Documents/YSSP_IIASA/data/pop_samirkc/SSP4.csv")) |> DataFrame    # file too large for Github
-mig0_ssp5 = CSV.File(joinpath(@__DIR__, "../../Documents/YSSP_IIASA/data/pop_samirkc/mig0_SSP5.csv")) |> DataFrame    # file too large for Github
-ssp5 = CSV.File(joinpath(@__DIR__, "../../Documents/YSSP_IIASA/data/pop_samirkc/SSP5.csv")) |> DataFrame     # file too large for Github
+mig0_ssp4 = CSV.File(joinpath(@__DIR__, "../../data/pop_samirkc/mig0_SSP4.csv")) |> DataFrame   # file too large for Github
+ssp4 = CSV.File(joinpath(@__DIR__, "../../data/pop_samirkc/SSP4.csv")) |> DataFrame    # file too large for Github
+mig0_ssp5 = CSV.File(joinpath(@__DIR__, "../../data/pop_samirkc/mig0_SSP5.csv")) |> DataFrame    # file too large for Github
+ssp5 = CSV.File(joinpath(@__DIR__, "../../data/pop_samirkc/SSP5.csv")) |> DataFrame     # file too large for Github
 
 select!(mig0_ssp1, Not(:Column1))
 select!(ssp1, Not(:Column1))
@@ -702,5 +702,5 @@ end
 
 ####################################### Write output files with results ############################################################################
 CSV.write(joinpath(@__DIR__, "../results/sspall_6.csv"), sspall)
-CSV.write(joinpath(@__DIR__, "../../Documents/YSSP_IIASA/results/migflow_6.csv"), migflow)
-CSV.write(joinpath(@__DIR__, "../../Documents/YSSP_IIASA/results/remittances_6.csv"), remittances)
+CSV.write(joinpath(@__DIR__, "../../results/migflow_6.csv"), migflow)
+CSV.write(joinpath(@__DIR__, "../../results/remittances_6.csv"), remittances)
