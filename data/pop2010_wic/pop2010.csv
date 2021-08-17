@@ -1,0 +1,1497 @@
+Source: Wittgenstein Centre for Demography and Global Human Capital (2018). Wittgenstein Centre Data Explorer Version 2.0,,,,
+Available at: www.wittgensteincentre.org/dataexplorer ,,,,
+,,,,
+,,,,
+Population Size by Education (000's),,,,
+"De facto population in a country or region, classified by sex and by five-year age groups. Available by level of educational attainment, in all scenarios, and at all geographical scales. Figures are presented in thousands. <br><br> Data for 1950 to 2015: Based on <a href=""http://esa.un.org/wpp/documentation/WPP%202010%20publications.htm"">UN Population Division, World Population Prospects 2017</a>",,,,
+Medium (SSP2),,,,
+ ,,,,
+Area,Year,Education,ISOCode,Population
+Afghanistan,2010,Total,4,28422.5
+Albania,2010,Total,8,2940.8
+Algeria,2010,Total,12,36124.6
+Angola,2010,Total,24,22057.1
+Argentina,2010,Total,32,41223.9
+Armenia,2010,Total,51,2915.5
+Aruba,2010,Total,533,101.7
+Australia,2010,Total,36,22156.6
+Austria,2010,Total,40,8393.6
+Azerbaijan,2010,Total,31,9093.4
+Bahamas,2010,Total,44,360.8
+Bahrain,2010,Total,48,1264.8
+Bangladesh,2010,Total,50,151767.2
+Belarus,2010,Total,112,9489.2
+Belgium,2010,Total,56,10942.5
+Belize,2010,Total,84,321.6
+Benin,2010,Total,204,9414
+Bhutan,2010,Total,64,727.7
+Bolivia (Plurinational State of),2010,Total,68,9918.2
+Bosnia and Herzegovina,2010,Total,70,3858.5
+Botswana,2010,Total,72,2034.4
+Brazil,2010,Total,76,197208.7
+Bulgaria,2010,Total,100,7387.1
+Burkina Faso,2010,Total,854,15605
+Burundi,2010,Total,108,9164.9
+Cambodia,2010,Total,116,14345.3
+Cameroon,2010,Total,120,19974.5
+Canada,2010,Total,124,34130.2
+Cape Verde,2010,Total,132,502.3
+Central African Republic,2010,Total,140,4448.9
+Chad,2010,Total,148,11883.1
+Chile,2010,Total,152,16993.3
+China,2010,Total,156,1350132.3
+Colombia,2010,Total,170,45916
+Comoros,2010,Total,174,694.2
+Congo,2010,Total,178,4182.1
+Costa Rica,2010,Total,188,4545.3
+Cote d'Ivoire,2010,Total,384,20265.9
+Croatia,2010,Total,191,4316.5
+Cuba,2010,Total,192,11332.3
+Curaçao,2010,Total,531,147.6
+Cyprus,2010,Total,196,1106
+Czech Republic,2010,Total,203,10509.5
+Democratic People's Republic of Korea,2010,Total,408,24547.4
+Democratic Republic of the Congo,2010,Total,180,65069.4
+Denmark,2010,Total,208,5551
+Dominican Republic,2010,Total,214,9898
+Ecuador,2010,Total,218,14934.7
+Egypt,2010,Total,818,84112.7
+El Salvador,2010,Total,222,6164.7
+Equatorial Guinea,2010,Total,226,951.1
+Estonia,2010,Total,233,1332.1
+Ethiopia,2010,Total,231,87708.5
+Fiji,2010,Total,242,859.8
+Finland,2010,Total,246,5368.2
+France,2010,Total,250,62944.3
+French Guiana,2010,Total,254,234.2
+French Polynesia,2010,Total,258,267.8
+Gabon,2010,Total,266,1564.5
+Gambia,2010,Total,270,1690.8
+Georgia,2010,Total,268,4293.3
+Germany,2010,Total,276,80531.4
+Ghana,2010,Total,288,24512.6
+Greece,2010,Total,300,11250.8
+Guadeloupe,2010,Total,312,451.8
+Guatemala,2010,Total,320,14631.1
+Guinea,2010,Total,324,10935.2
+Guinea-Bissau,2010,Total,624,1614.6
+Guyana,2010,Total,328,746.4
+Haiti,2010,Total,332,10001.2
+Honduras,2010,Total,340,7814.3
+Hong Kong Special Administrative Region of China,2010,Total,344,6988.6
+Hungary,2010,Total,348,10023.4
+Iceland,2010,Total,352,318.1
+India,2010,Total,356,1230954.9
+Indonesia,2010,Total,360,242076.3
+Iran (Islamic Republic of),2010,Total,364,74327.1
+Iraq,2010,Total,368,30771.9
+Ireland,2010,Total,372,4618.8
+Israel,2010,Total,376,7426.2
+Italy,2010,Total,380,59601.7
+Jamaica,2010,Total,388,2817.2
+Japan,2010,Total,392,127566.8
+Jordan,2010,Total,400,6784.1
+Kazakhstan,2010,Total,398,16309
+Kenya,2010,Total,404,41024.6
+Kiribati,2010,Total,296,102.6
+Kuwait,2010,Total,414,3034.1
+Kyrgyzstan,2010,Total,417,5448.1
+Lao People's Democratic Republic,2010,Total,418,6246.7
+Latvia,2010,Total,428,2093.1
+Lebanon,2010,Total,422,4337.1
+Lesotho,2010,Total,426,2013.4
+Liberia,2010,Total,430,3953.7
+Lithuania,2010,Total,440,3122.9
+Luxembourg,2010,Total,442,507.9
+Macao Special Administrative Region of China,2010,Total,446,535
+Madagascar,2010,Total,450,21134.9
+Malawi,2010,Total,454,14957.4
+Malaysia,2010,Total,458,28112.3
+Maldives,2010,Total,462,364.6
+Mali,2010,Total,466,15182.6
+Malta,2010,Total,470,408
+Martinique,2010,Total,474,394.9
+Mauritius,2010,Total,480,1248
+Mexico,2010,Total,484,118025.7
+Micronesia (Federated States of),2010,Total,583,103.6
+Mongolia,2010,Total,496,2712.7
+Montenegro,2010,Total,499,619.1
+Morocco,2010,Total,504,32407
+Mozambique,2010,Total,508,24221.1
+Myanmar,2010,Total,104,51359.2
+Namibia,2010,Total,516,2193.1
+Nepal,2010,Total,524,26889.6
+Netherlands,2010,Total,528,16665.7
+New Caledonia,2010,Total,540,248.9
+New Zealand,2010,Total,554,4368.7
+Nicaragua,2010,Total,558,5736.9
+Niger,2010,Total,562,16358.8
+Nigeria,2010,Total,566,159223
+Norway,2010,Total,578,4890.7
+Occupied Palestinian Territory,2010,Total,275,4066.5
+Oman,2010,Total,512,3041.8
+Pakistan,2010,Total,586,170540.7
+Panama,2010,Total,591,3641.6
+Paraguay,2010,Total,600,6209.2
+Peru,2010,Total,604,29369.9
+Philippines,2010,Total,608,93717.2
+Poland,2010,Total,616,38635.6
+Portugal,2010,Total,620,10597.4
+Puerto Rico,2010,Total,630,3716.7
+Qatar,2010,Total,634,1760.1
+Republic of Korea,2010,Total,410,49096.6
+Republic of Moldova,2010,Total,498,4085.2
+Reunion,2010,Total,638,830.5
+Romania,2010,Total,642,20309.6
+Russian Federation,2010,Total,643,143157.4
+Rwanda,2010,Total,646,10203.2
+Saint Lucia,2010,Total,662,172.6
+Saint Vincent and the Grenadines,2010,Total,670,109.3
+Samoa,2010,Total,882,186.2
+Sao Tome and Principe,2010,Total,678,174
+Saudi Arabia,2010,Total,682,27426.9
+Senegal,2010,Total,686,12915.2
+Serbia,2010,Total,688,9058.6
+Sierra Leone,2010,Total,694,6459.8
+Singapore,2010,Total,702,5078.1
+Slovakia,2010,Total,703,5412.1
+Slovenia,2010,Total,705,2053.8
+Solomon Islands,2010,Total,90,527.1
+Somalia,2010,Total,706,12053.1
+South Africa,2010,Total,710,51347.6
+South Sudan,2010,Total,728,10061.1
+Spain,2010,Total,724,46635.9
+Sri Lanka,2010,Total,144,20200.8
+Sudan,2010,Total,729,35716.7
+Suriname,2010,Total,740,526.1
+Swaziland,2010,Total,748,1202.9
+Sweden,2010,Total,752,9383.7
+Switzerland,2010,Total,756,7830.5
+Syrian Arab Republic,2010,Total,760,21014.1
+Taiwan Province of China,2010,Total,158,23193.2
+Tajikistan,2010,Total,762,7641.6
+Thailand,2010,Total,764,66792.1
+The former Yugoslav Republic of Macedonia,2010,Total,807,2058.8
+Timor-Leste,2010,Total,626,1126.9
+Togo,2010,Total,768,6418.2
+Tonga,2010,Total,776,104.1
+Trinidad and Tobago,2010,Total,780,1328.1
+Tunisia,2010,Total,788,10639.9
+Turkey,2010,Total,792,72332.8
+Turkmenistan,2010,Total,795,5088.5
+Uganda,2010,Total,800,33914.6
+Ukraine,2010,Total,804,45792.4
+United Arab Emirates,2010,Total,784,8271.3
+United Kingdom of Great Britain and Northern Ireland,2010,Total,826,62711.4
+United Republic of Tanzania,2010,Total,834,45930.9
+United States of America,2010,Total,840,310925.5
+Uruguay,2010,Total,858,3374.4
+Vanuatu,2010,Total,548,236.3
+Venezuela (Bolivarian Republic of),2010,Total,862,29028
+Viet Nam,2010,Total,704,88387.1
+World,2010,Total,900,6972709.2
+Yemen,2010,Total,887,23610.2
+Zambia,2010,Total,894,13907.5
+Zimbabwe,2010,Total,716,14019
+Afghanistan,2010,Under 15,4,13767.4
+Albania,2010,Under 15,8,660.6
+Algeria,2010,Under 15,12,9827.8
+Angola,2010,Under 15,24,11055.1
+Argentina,2010,Under 15,32,10666.2
+Armenia,2010,Under 15,51,559.9
+Aruba,2010,Under 15,533,21.2
+Australia,2010,Under 15,36,4206.3
+Austria,2010,Under 15,40,1237.7
+Azerbaijan,2010,Under 15,31,2062.6
+Bahamas,2010,Under 15,44,81.3
+Bahrain,2010,Under 15,48,252
+Bangladesh,2010,Under 15,50,48861.2
+Belarus,2010,Under 15,112,1406.3
+Belgium,2010,Under 15,56,1846.8
+Belize,2010,Under 15,84,114.8
+Benin,2010,Under 15,204,4033.5
+Bhutan,2010,Under 15,64,222.5
+Bolivia (Plurinational State of),2010,Under 15,68,3440.2
+Bosnia and Herzegovina,2010,Under 15,70,586.1
+Botswana,2010,Under 15,72,664.9
+Brazil,2010,Under 15,76,49005.8
+Bulgaria,2010,Under 15,100,982
+Burkina Faso,2010,Under 15,854,7213.3
+Burundi,2010,Under 15,108,3865.2
+Cambodia,2010,Under 15,116,4768.6
+Cameroon,2010,Under 15,120,8679.2
+Canada,2010,Under 15,124,5625.4
+Cape Verde,2010,Under 15,132,170.9
+Central African Republic,2010,Under 15,140,1889.1
+Chad,2010,Under 15,148,5775
+Chile,2010,Under 15,152,3817.6
+China,2010,Under 15,156,242692
+Colombia,2010,Under 15,170,12118.7
+Comoros,2010,Under 15,174,283.1
+Congo,2010,Under 15,178,1828
+Costa Rica,2010,Under 15,188,1117.2
+Cote d'Ivoire,2010,Under 15,384,8922.1
+Croatia,2010,Under 15,191,668.4
+Cuba,2010,Under 15,192,1969.6
+Curaçao,2010,Under 15,531,29.3
+Cyprus,2010,Under 15,196,198.4
+Czech Republic,2010,Under 15,203,1500.6
+Democratic People's Republic of Korea,2010,Under 15,408,5600.2
+Democratic Republic of the Congo,2010,Under 15,180,29771.4
+Denmark,2010,Under 15,208,997.1
+Dominican Republic,2010,Under 15,214,3111.2
+Ecuador,2010,Under 15,218,4589.6
+Egypt,2010,Under 15,818,26988.9
+El Salvador,2010,Under 15,222,1948.1
+Equatorial Guinea,2010,Under 15,226,365.5
+Estonia,2010,Under 15,233,201.6
+Ethiopia,2010,Under 15,231,38985.7
+Fiji,2010,Under 15,242,249.4
+Finland,2010,Under 15,246,886.6
+France,2010,Under 15,250,11603
+French Guiana,2010,Under 15,254,82.6
+French Polynesia,2010,Under 15,258,67.5
+Gabon,2010,Under 15,266,606.8
+Gambia,2010,Under 15,270,783
+Georgia,2010,Under 15,268,762.5
+Germany,2010,Under 15,276,10972.1
+Ghana,2010,Under 15,288,9701.3
+Greece,2010,Under 15,300,1707.5
+Guadeloupe,2010,Under 15,312,99.2
+Guatemala,2010,Under 15,320,5759.4
+Guinea,2010,Under 15,324,4693.3
+Guinea-Bissau,2010,Under 15,624,658.7
+Guyana,2010,Under 15,328,243.9
+Haiti,2010,Under 15,332,3588.2
+Honduras,2010,Under 15,340,3000.8
+Hong Kong Special Administrative Region of China,2010,Under 15,344,838.5
+Hungary,2010,Under 15,348,1475.3
+Iceland,2010,Under 15,352,66.6
+India,2010,Under 15,356,380274.3
+Indonesia,2010,Under 15,360,70253.6
+Iran (Islamic Republic of),2010,Under 15,364,17492.7
+Iraq,2010,Under 15,368,12824.5
+Ireland,2010,Under 15,372,958
+Israel,2010,Under 15,376,2025.3
+Italy,2010,Under 15,380,8368.6
+Jamaica,2010,Under 15,388,759.3
+Japan,2010,Under 15,392,17167.7
+Jordan,2010,Under 15,400,2657.7
+Kazakhstan,2010,Under 15,398,3942
+Kenya,2010,Under 15,404,17880.1
+Kiribati,2010,Under 15,296,37
+Kuwait,2010,Under 15,414,695.9
+Kyrgyzstan,2010,Under 15,417,1621.1
+Lao People's Democratic Republic,2010,Under 15,418,2266.7
+Latvia,2010,Under 15,428,298.5
+Lebanon,2010,Under 15,422,1028.8
+Lesotho,2010,Under 15,426,760.6
+Liberia,2010,Under 15,430,1711.4
+Lithuania,2010,Under 15,440,461.2
+Luxembourg,2010,Under 15,442,89.6
+Macao Special Administrative Region of China,2010,Under 15,446,68.4
+Madagascar,2010,Under 15,450,9205.7
+Malawi,2010,Under 15,454,7009.5
+Malaysia,2010,Under 15,458,7852.1
+Maldives,2010,Under 15,462,92.8
+Mali,2010,Under 15,466,7156.2
+Malta,2010,Under 15,470,63.1
+Martinique,2010,Under 15,474,77.3
+Mauritius,2010,Under 15,480,273.9
+Mexico,2010,Under 15,484,34960.9
+Micronesia (Federated States of),2010,Under 15,583,38.2
+Mongolia,2010,Under 15,496,731.2
+Montenegro,2010,Under 15,499,120.1
+Morocco,2010,Under 15,504,9235.6
+Mozambique,2010,Under 15,508,11077.5
+Myanmar,2010,Under 15,104,15035.8
+Namibia,2010,Under 15,516,835.2
+Nepal,2010,Under 15,524,10004.2
+Netherlands,2010,Under 15,528,2923.2
+New Caledonia,2010,Under 15,540,60.5
+New Zealand,2010,Under 15,554,895.7
+Nicaragua,2010,Under 15,558,1881.3
+Niger,2010,Under 15,562,8206.8
+Nigeria,2010,Under 15,566,69822.7
+Norway,2010,Under 15,578,919.1
+Occupied Palestinian Territory,2010,Under 15,275,1724.3
+Oman,2010,Under 15,512,781.3
+Pakistan,2010,Under 15,586,61714.3
+Panama,2010,Under 15,591,1061.8
+Paraguay,2010,Under 15,600,2030.8
+Peru,2010,Under 15,604,8624.6
+Philippines,2010,Under 15,608,31774.7
+Poland,2010,Under 15,616,5831.8
+Portugal,2010,Under 15,620,1593.2
+Puerto Rico,2010,Under 15,630,766.4
+Qatar,2010,Under 15,634,232.9
+Republic of Korea,2010,Under 15,410,7978.8
+Republic of Moldova,2010,Under 15,498,674.6
+Reunion,2010,Under 15,638,211.1
+Romania,2010,Under 15,642,3225.1
+Russian Federation,2010,Under 15,643,21316.7
+Rwanda,2010,Under 15,646,4279.4
+Saint Lucia,2010,Under 15,662,40
+Saint Vincent and the Grenadines,2010,Under 15,670,29
+Samoa,2010,Under 15,882,71.2
+Sao Tome and Principe,2010,Under 15,678,77.1
+Saudi Arabia,2010,Under 15,682,8169.2
+Senegal,2010,Under 15,686,5585.4
+Serbia,2010,Under 15,688,1561.8
+Sierra Leone,2010,Under 15,694,2838.8
+Singapore,2010,Under 15,702,879.9
+Slovakia,2010,Under 15,703,828.8
+Slovenia,2010,Under 15,705,287.4
+Solomon Islands,2010,Under 15,90,215.2
+Somalia,2010,Under 15,706,5744.7
+South Africa,2010,Under 15,710,15697.2
+South Sudan,2010,Under 15,728,4363.6
+Spain,2010,Under 15,724,6837.2
+Sri Lanka,2010,Under 15,144,5136.6
+Sudan,2010,Under 15,729,14788.8
+Suriname,2010,Under 15,740,151
+Swaziland,2010,Under 15,748,474.8
+Sweden,2010,Under 15,752,1550.1
+Switzerland,2010,Under 15,756,1178.8
+Syrian Arab Republic,2010,Under 15,760,7643.8
+Taiwan Province of China,2010,Under 15,158,3715.6
+Tajikistan,2010,Under 15,762,2731
+Thailand,2010,Under 15,764,12901.9
+The former Yugoslav Republic of Macedonia,2010,Under 15,807,370.8
+Timor-Leste,2010,Under 15,626,506
+Togo,2010,Under 15,768,2765.3
+Tonga,2010,Under 15,776,38.9
+Trinidad and Tobago,2010,Under 15,780,275.2
+Tunisia,2010,Under 15,788,2483.1
+Turkey,2010,Under 15,792,19457.3
+Turkmenistan,2010,Under 15,795,1501.6
+Uganda,2010,Under 15,800,16711
+Ukraine,2010,Under 15,804,6468.8
+United Arab Emirates,2010,Under 15,784,1106.4
+United Kingdom of Great Britain and Northern Ireland,2010,Under 15,826,11092.8
+United Republic of Tanzania,2010,Under 15,834,20860.8
+United States of America,2010,Under 15,840,62260.5
+Uruguay,2010,Under 15,858,759.4
+Vanuatu,2010,Under 15,548,90.3
+Venezuela (Bolivarian Republic of),2010,Under 15,862,8636.2
+Viet Nam,2010,Under 15,704,20948.8
+World,2010,Under 15,900,1864424.1
+Yemen,2010,Under 15,887,10024.2
+Zambia,2010,Under 15,894,6478.3
+Zimbabwe,2010,Under 15,716,5849.1
+Afghanistan,2010,No Education,4,9972.9
+Albania,2010,No Education,8,87.8
+Algeria,2010,No Education,12,5062.6
+Angola,2010,No Education,24,5434.2
+Argentina,2010,No Education,32,565.1
+Armenia,2010,No Education,51,17.5
+Aruba,2010,No Education,533,6.1
+Australia,2010,No Education,36,146.1
+Austria,2010,No Education,40,0
+Azerbaijan,2010,No Education,31,21.3
+Bahamas,2010,No Education,44,5
+Bahrain,2010,No Education,48,50.9
+Bangladesh,2010,No Education,50,37153.1
+Belarus,2010,No Education,112,33.8
+Belgium,2010,No Education,56,259.6
+Belize,2010,No Education,84,10.1
+Benin,2010,No Education,204,2625.1
+Bhutan,2010,No Education,64,244.3
+Bolivia (Plurinational State of),2010,No Education,68,410.7
+Bosnia and Herzegovina,2010,No Education,70,258.7
+Botswana,2010,No Education,72,161.6
+Brazil,2010,No Education,76,13168.5
+Bulgaria,2010,No Education,100,75.4
+Burkina Faso,2010,No Education,854,6085
+Burundi,2010,No Education,108,2310.7
+Cambodia,2010,No Education,116,2393.1
+Cameroon,2010,No Education,120,2911.3
+Canada,2010,No Education,124,115.5
+Cape Verde,2010,No Education,132,37.8
+Central African Republic,2010,No Education,140,756.2
+Chad,2010,No Education,148,3834.8
+Chile,2010,No Education,152,330.1
+China,2010,No Education,156,56868
+Colombia,2010,No Education,170,2287.8
+Comoros,2010,No Education,174,130.3
+Congo,2010,No Education,178,229.6
+Costa Rica,2010,No Education,188,121.2
+Cote d'Ivoire,2010,No Education,384,5501.3
+Croatia,2010,No Education,191,59
+Cuba,2010,No Education,192,171.6
+Curaçao,2010,No Education,531,0.4
+Cyprus,2010,No Education,196,33.6
+Czech Republic,2010,No Education,203,43.4
+Democratic People's Republic of Korea,2010,No Education,408,135.9
+Democratic Republic of the Congo,2010,No Education,180,6454.3
+Denmark,2010,No Education,208,6.1
+Dominican Republic,2010,No Education,214,905.5
+Ecuador,2010,No Education,218,789.4
+Egypt,2010,No Education,818,16265.4
+El Salvador,2010,No Education,222,658.4
+Equatorial Guinea,2010,No Education,226,45.7
+Estonia,2010,No Education,233,3.1
+Ethiopia,2010,No Education,231,27746.3
+Fiji,2010,No Education,242,5.4
+Finland,2010,No Education,246,0
+France,2010,No Education,250,853.4
+French Guiana,2010,No Education,254,23.3
+French Polynesia,2010,No Education,258,6
+Gabon,2010,No Education,266,104.7
+Gambia,2010,No Education,270,534.9
+Georgia,2010,No Education,268,20.9
+Germany,2010,No Education,276,0
+Ghana,2010,No Education,288,4071.6
+Greece,2010,No Education,300,244.3
+Guadeloupe,2010,No Education,312,6.5
+Guatemala,2010,No Education,320,1912.5
+Guinea,2010,No Education,324,3550.4
+Guinea-Bissau,2010,No Education,624,440.8
+Guyana,2010,No Education,328,8.7
+Haiti,2010,No Education,332,2479.5
+Honduras,2010,No Education,340,931
+Hong Kong Special Administrative Region of China,2010,No Education,344,334.4
+Hungary,2010,No Education,348,46.3
+Iceland,2010,No Education,352,0.1
+India,2010,No Education,356,285173.2
+Indonesia,2010,No Education,360,13354
+Iran (Islamic Republic of),2010,No Education,364,8562.3
+Iraq,2010,No Education,368,3235.8
+Ireland,2010,No Education,372,0
+Israel,2010,No Education,376,135.1
+Italy,2010,No Education,380,512.5
+Jamaica,2010,No Education,388,13
+Japan,2010,No Education,392,138.8
+Jordan,2010,No Education,400,428
+Kazakhstan,2010,No Education,398,41
+Kenya,2010,No Education,404,3768.6
+Kiribati,2010,No Education,296,6.8
+Kuwait,2010,No Education,414,101.4
+Kyrgyzstan,2010,No Education,417,26
+Lao People's Democratic Republic,2010,No Education,418,901.6
+Latvia,2010,No Education,428,1.9
+Lebanon,2010,No Education,422,255.5
+Lesotho,2010,No Education,426,133.1
+Liberia,2010,No Education,430,1116.2
+Lithuania,2010,No Education,440,19.2
+Luxembourg,2010,No Education,442,0
+Macao Special Administrative Region of China,2010,No Education,446,16.4
+Madagascar,2010,No Education,450,2720.3
+Malawi,2010,No Education,454,2098.3
+Malaysia,2010,No Education,458,1453.1
+Maldives,2010,No Education,462,32.9
+Mali,2010,No Education,466,5770
+Malta,2010,No Education,470,5.3
+Martinique,2010,No Education,474,4
+Mauritius,2010,No Education,480,50.2
+Mexico,2010,No Education,484,5788
+Micronesia (Federated States of),2010,No Education,583,5.3
+Mongolia,2010,No Education,496,42.2
+Montenegro,2010,No Education,499,3.6
+Morocco,2010,No Education,504,10747.1
+Mozambique,2010,No Education,508,7909.4
+Myanmar,2010,No Education,104,6484.7
+Namibia,2010,No Education,516,192.7
+Nepal,2010,No Education,524,6884.8
+Netherlands,2010,No Education,528,0
+New Caledonia,2010,No Education,540,11.3
+New Zealand,2010,No Education,554,55
+Nicaragua,2010,No Education,558,749.7
+Niger,2010,No Education,562,5886.9
+Nigeria,2010,No Education,566,35416.8
+Norway,2010,No Education,578,12.9
+Occupied Palestinian Territory,2010,No Education,275,87.2
+Oman,2010,No Education,512,382.1
+Pakistan,2010,No Education,586,55404.7
+Panama,2010,No Education,591,149.6
+Paraguay,2010,No Education,600,127
+Peru,2010,No Education,604,1122.7
+Philippines,2010,No Education,608,1282.5
+Poland,2010,No Education,616,0
+Portugal,2010,No Education,620,875.8
+Puerto Rico,2010,No Education,630,64
+Qatar,2010,No Education,634,63
+Republic of Korea,2010,No Education,410,1601.1
+Republic of Moldova,2010,No Education,498,62
+Reunion,2010,No Education,638,38.1
+Romania,2010,No Education,642,216.8
+Russian Federation,2010,No Education,643,308.7
+Rwanda,2010,No Education,646,1226.7
+Saint Lucia,2010,No Education,662,6.4
+Saint Vincent and the Grenadines,2010,No Education,670,0.6
+Samoa,2010,No Education,882,0.6
+Sao Tome and Principe,2010,No Education,678,10.7
+Saudi Arabia,2010,No Education,682,2501.1
+Senegal,2010,No Education,686,4073.2
+Serbia,2010,No Education,688,247.5
+Sierra Leone,2010,No Education,694,2051.7
+Singapore,2010,No Education,702,277.2
+Slovakia,2010,No Education,703,29.8
+Slovenia,2010,No Education,705,6
+Solomon Islands,2010,No Education,90,56.1
+Somalia,2010,No Education,706,3354.3
+South Africa,2010,No Education,710,2635.5
+South Sudan,2010,No Education,728,4274
+Spain,2010,No Education,724,715.9
+Sri Lanka,2010,No Education,144,2248.3
+Sudan,2010,No Education,729,10629.1
+Suriname,2010,No Education,740,1.5
+Swaziland,2010,No Education,748,69.6
+Sweden,2010,No Education,752,0
+Switzerland,2010,No Education,756,127.1
+Syrian Arab Republic,2010,No Education,760,2264.2
+Taiwan Province of China,2010,No Education,158,401.5
+Tajikistan,2010,No Education,762,34.4
+Thailand,2010,No Education,764,2009.6
+The former Yugoslav Republic of Macedonia,2010,No Education,807,64.9
+Timor-Leste,2010,No Education,626,256.3
+Togo,2010,No Education,768,1305.2
+Tonga,2010,No Education,776,0.6
+Trinidad and Tobago,2010,No Education,780,17.7
+Tunisia,2010,No Education,788,1917.6
+Turkey,2010,No Education,792,3001.2
+Turkmenistan,2010,No Education,795,11.6
+Uganda,2010,No Education,800,2776.7
+Ukraine,2010,No Education,804,128.7
+United Arab Emirates,2010,No Education,784,585.5
+United Kingdom of Great Britain and Northern Ireland,2010,No Education,826,0
+United Republic of Tanzania,2010,No Education,834,5115.3
+United States of America,2010,No Education,840,2780.2
+Uruguay,2010,No Education,858,29.6
+Vanuatu,2010,No Education,548,25.1
+Venezuela (Bolivarian Republic of),2010,No Education,862,1011.8
+Viet Nam,2010,No Education,704,3894.7
+World,2010,No Education,900,781899.9
+Yemen,2010,No Education,887,11128.9
+Zambia,2010,No Education,894,1213.5
+Zimbabwe,2010,No Education,716,773.4
+Afghanistan,2010,Incomplete Primary,4,0
+Albania,2010,Incomplete Primary,8,13.1
+Algeria,2010,Incomplete Primary,12,1125.6
+Angola,2010,Incomplete Primary,24,1510.4
+Argentina,2010,Incomplete Primary,32,3799.5
+Armenia,2010,Incomplete Primary,51,0
+Aruba,2010,Incomplete Primary,533,5.5
+Australia,2010,Incomplete Primary,36,0
+Austria,2010,Incomplete Primary,40,0
+Azerbaijan,2010,Incomplete Primary,31,44.4
+Bahamas,2010,Incomplete Primary,44,6.9
+Bahrain,2010,Incomplete Primary,48,237.8
+Bangladesh,2010,Incomplete Primary,50,10339.2
+Belarus,2010,Incomplete Primary,112,40.9
+Belgium,2010,Incomplete Primary,56,0
+Belize,2010,Incomplete Primary,84,37.8
+Benin,2010,Incomplete Primary,204,798.2
+Bhutan,2010,Incomplete Primary,64,83.1
+Bolivia (Plurinational State of),2010,Incomplete Primary,68,950.2
+Bosnia and Herzegovina,2010,Incomplete Primary,70,37.8
+Botswana,2010,Incomplete Primary,72,119.1
+Brazil,2010,Incomplete Primary,76,20832.1
+Bulgaria,2010,Incomplete Primary,100,76.5
+Burkina Faso,2010,Incomplete Primary,854,840.5
+Burundi,2010,Incomplete Primary,108,1442.1
+Cambodia,2010,Incomplete Primary,116,2519.4
+Cameroon,2010,Incomplete Primary,120,703.9
+Canada,2010,Incomplete Primary,124,358.5
+Cape Verde,2010,Incomplete Primary,132,123.2
+Central African Republic,2010,Incomplete Primary,140,672.5
+Chad,2010,Incomplete Primary,148,847.1
+Chile,2010,Incomplete Primary,152,1096.8
+China,2010,Incomplete Primary,156,72523
+Colombia,2010,Incomplete Primary,170,5178.7
+Comoros,2010,Incomplete Primary,174,51.3
+Congo,2010,Incomplete Primary,178,369.7
+Costa Rica,2010,Incomplete Primary,188,444.5
+Cote d'Ivoire,2010,Incomplete Primary,384,1666.1
+Croatia,2010,Incomplete Primary,191,32.6
+Cuba,2010,Incomplete Primary,192,471.3
+Curaçao,2010,Incomplete Primary,531,5.5
+Cyprus,2010,Incomplete Primary,196,0
+Czech Republic,2010,Incomplete Primary,203,0
+Democratic People's Republic of Korea,2010,Incomplete Primary,408,0
+Democratic Republic of the Congo,2010,Incomplete Primary,180,8299.4
+Denmark,2010,Incomplete Primary,208,0
+Dominican Republic,2010,Incomplete Primary,214,1219.3
+Ecuador,2010,Incomplete Primary,218,1572
+Egypt,2010,Incomplete Primary,818,3683.5
+El Salvador,2010,Incomplete Primary,222,892.9
+Equatorial Guinea,2010,Incomplete Primary,226,97.3
+Estonia,2010,Incomplete Primary,233,0
+Ethiopia,2010,Incomplete Primary,231,9348.7
+Fiji,2010,Incomplete Primary,242,27.7
+Finland,2010,Incomplete Primary,246,0
+France,2010,Incomplete Primary,250,0
+French Guiana,2010,Incomplete Primary,254,8.5
+French Polynesia,2010,Incomplete Primary,258,6.8
+Gabon,2010,Incomplete Primary,266,149.3
+Gambia,2010,Incomplete Primary,270,44.8
+Georgia,2010,Incomplete Primary,268,36.7
+Germany,2010,Incomplete Primary,276,0
+Ghana,2010,Incomplete Primary,288,1450.8
+Greece,2010,Incomplete Primary,300,416.9
+Guadeloupe,2010,Incomplete Primary,312,40
+Guatemala,2010,Incomplete Primary,320,2358.6
+Guinea,2010,Incomplete Primary,324,858
+Guinea-Bissau,2010,Incomplete Primary,624,203.4
+Guyana,2010,Incomplete Primary,328,20.7
+Haiti,2010,Incomplete Primary,332,1037.2
+Honduras,2010,Incomplete Primary,340,1300.3
+Hong Kong Special Administrative Region of China,2010,Incomplete Primary,344,437.9
+Hungary,2010,Incomplete Primary,348,0
+Iceland,2010,Incomplete Primary,352,0
+India,2010,Incomplete Primary,356,54907.1
+Indonesia,2010,Incomplete Primary,360,12336.4
+Iran (Islamic Republic of),2010,Incomplete Primary,364,3411.3
+Iraq,2010,Incomplete Primary,368,3700.1
+Ireland,2010,Incomplete Primary,372,19.2
+Israel,2010,Incomplete Primary,376,249.2
+Italy,2010,Incomplete Primary,380,1725.7
+Jamaica,2010,Incomplete Primary,388,118.4
+Japan,2010,Incomplete Primary,392,0
+Jordan,2010,Incomplete Primary,400,402
+Kazakhstan,2010,Incomplete Primary,398,194.1
+Kenya,2010,Incomplete Primary,404,3505.9
+Kiribati,2010,Incomplete Primary,296,8
+Kuwait,2010,Incomplete Primary,414,641.5
+Kyrgyzstan,2010,Incomplete Primary,417,35.9
+Lao People's Democratic Republic,2010,Incomplete Primary,418,733.3
+Latvia,2010,Incomplete Primary,428,9.2
+Lebanon,2010,Incomplete Primary,422,129
+Lesotho,2010,Incomplete Primary,426,394.2
+Liberia,2010,Incomplete Primary,430,255.7
+Lithuania,2010,Incomplete Primary,440,35.9
+Luxembourg,2010,Incomplete Primary,442,0
+Macao Special Administrative Region of China,2010,Incomplete Primary,446,34.2
+Madagascar,2010,Incomplete Primary,450,5005.1
+Malawi,2010,Incomplete Primary,454,1938.9
+Malaysia,2010,Incomplete Primary,458,1213
+Maldives,2010,Incomplete Primary,462,46.8
+Mali,2010,Incomplete Primary,466,826
+Malta,2010,Incomplete Primary,470,0
+Martinique,2010,Incomplete Primary,474,36.9
+Mauritius,2010,Incomplete Primary,480,210.8
+Mexico,2010,Incomplete Primary,484,10398.2
+Micronesia (Federated States of),2010,Incomplete Primary,583,1.9
+Mongolia,2010,Incomplete Primary,496,41.9
+Montenegro,2010,Incomplete Primary,499,10.2
+Morocco,2010,Incomplete Primary,504,1949.9
+Mozambique,2010,Incomplete Primary,508,2265.5
+Myanmar,2010,Incomplete Primary,104,8095.1
+Namibia,2010,Incomplete Primary,516,264.1
+Nepal,2010,Incomplete Primary,524,1269.3
+Netherlands,2010,Incomplete Primary,528,247.4
+New Caledonia,2010,Incomplete Primary,540,9.2
+New Zealand,2010,Incomplete Primary,554,0
+Nicaragua,2010,Incomplete Primary,558,887.9
+Niger,2010,Incomplete Primary,562,982.7
+Nigeria,2010,Incomplete Primary,566,4140.3
+Norway,2010,Incomplete Primary,578,0
+Occupied Palestinian Territory,2010,Incomplete Primary,275,125.2
+Oman,2010,Incomplete Primary,512,313.6
+Pakistan,2010,Incomplete Primary,586,5365.3
+Panama,2010,Incomplete Primary,591,222.3
+Paraguay,2010,Incomplete Primary,600,891.7
+Peru,2010,Incomplete Primary,604,2867.5
+Philippines,2010,Incomplete Primary,608,6896.5
+Poland,2010,Incomplete Primary,616,0
+Portugal,2010,Incomplete Primary,620,2363.7
+Puerto Rico,2010,Incomplete Primary,630,186.2
+Qatar,2010,Incomplete Primary,634,366.6
+Republic of Korea,2010,Incomplete Primary,410,331.5
+Republic of Moldova,2010,Incomplete Primary,498,55.8
+Reunion,2010,Incomplete Primary,638,55
+Romania,2010,Incomplete Primary,642,106.3
+Russian Federation,2010,Incomplete Primary,643,260.5
+Rwanda,2010,Incomplete Primary,646,2965.6
+Saint Lucia,2010,Incomplete Primary,662,3.8
+Saint Vincent and the Grenadines,2010,Incomplete Primary,670,3.4
+Samoa,2010,Incomplete Primary,882,1.4
+Sao Tome and Principe,2010,Incomplete Primary,678,42.9
+Saudi Arabia,2010,Incomplete Primary,682,1008.5
+Senegal,2010,Incomplete Primary,686,572.8
+Serbia,2010,Incomplete Primary,688,99.1
+Sierra Leone,2010,Incomplete Primary,694,437.2
+Singapore,2010,Incomplete Primary,702,290.7
+Slovakia,2010,Incomplete Primary,703,0
+Slovenia,2010,Incomplete Primary,705,0
+Solomon Islands,2010,Incomplete Primary,90,65.5
+Somalia,2010,Incomplete Primary,706,1477.9
+South Africa,2010,Incomplete Primary,710,3922.4
+South Sudan,2010,Incomplete Primary,728,0
+Spain,2010,Incomplete Primary,724,3424.6
+Sri Lanka,2010,Incomplete Primary,144,432.9
+Sudan,2010,Incomplete Primary,729,3862.4
+Suriname,2010,Incomplete Primary,740,27.3
+Swaziland,2010,Incomplete Primary,748,151.5
+Sweden,2010,Incomplete Primary,752,0
+Switzerland,2010,Incomplete Primary,756,0
+Syrian Arab Republic,2010,Incomplete Primary,760,3911.4
+Taiwan Province of China,2010,Incomplete Primary,158,516.2
+Tajikistan,2010,Incomplete Primary,762,16.4
+Thailand,2010,Incomplete Primary,764,1509
+The former Yugoslav Republic of Macedonia,2010,Incomplete Primary,807,203.9
+Timor-Leste,2010,Incomplete Primary,626,67
+Togo,2010,Incomplete Primary,768,745.1
+Tonga,2010,Incomplete Primary,776,0.6
+Trinidad and Tobago,2010,Incomplete Primary,780,67.2
+Tunisia,2010,Incomplete Primary,788,76.9
+Turkey,2010,Incomplete Primary,792,3420.8
+Turkmenistan,2010,Incomplete Primary,795,14.4
+Uganda,2010,Incomplete Primary,800,6260
+Ukraine,2010,Incomplete Primary,804,559.1
+United Arab Emirates,2010,Incomplete Primary,784,852.3
+United Kingdom of Great Britain and Northern Ireland,2010,Incomplete Primary,826,0
+United Republic of Tanzania,2010,Incomplete Primary,834,3080.9
+United States of America,2010,Incomplete Primary,840,2592
+Uruguay,2010,Incomplete Primary,858,247.8
+Vanuatu,2010,Incomplete Primary,548,32.1
+Venezuela (Bolivarian Republic of),2010,Incomplete Primary,862,1780.8
+Viet Nam,2010,Incomplete Primary,704,10112.3
+World,2010,Incomplete Primary,900,367221.1
+Yemen,2010,Incomplete Primary,887,0
+Zambia,2010,Incomplete Primary,894,1691.9
+Zimbabwe,2010,Incomplete Primary,716,799.3
+Afghanistan,2010,Primary,4,3302.5
+Albania,2010,Primary,8,193.4
+Algeria,2010,Primary,12,2657.8
+Angola,2010,Primary,24,2734.9
+Argentina,2010,Primary,32,10143.6
+Armenia,2010,Primary,51,68.1
+Aruba,2010,Primary,533,18
+Australia,2010,Primary,36,1064.9
+Austria,2010,Primary,40,764.4
+Azerbaijan,2010,Primary,31,158.7
+Bahamas,2010,Primary,44,13.7
+Bahrain,2010,Primary,48,134.2
+Bangladesh,2010,Primary,50,20568.7
+Belarus,2010,Primary,112,535.2
+Belgium,2010,Primary,56,1141.8
+Belize,2010,Primary,84,67.8
+Benin,2010,Primary,204,1056
+Bhutan,2010,Primary,64,29.7
+Bolivia (Plurinational State of),2010,Primary,68,980.1
+Bosnia and Herzegovina,2010,Primary,70,356.9
+Botswana,2010,Primary,72,311.3
+Brazil,2010,Primary,76,32182.1
+Bulgaria,2010,Primary,100,345.4
+Burkina Faso,2010,Primary,854,518.6
+Burundi,2010,Primary,108,1178.2
+Cambodia,2010,Primary,116,2500.4
+Cameroon,2010,Primary,120,3972.7
+Canada,2010,Primary,124,1436
+Cape Verde,2010,Primary,132,58.1
+Central African Republic,2010,Primary,140,528.5
+Chad,2010,Primary,148,840.1
+Chile,2010,Primary,152,976.4
+China,2010,Primary,156,185680.6
+Colombia,2010,Primary,170,9192.2
+Comoros,2010,Primary,174,108.4
+Congo,2010,Primary,178,976.1
+Costa Rica,2010,Primary,188,1240.7
+Cote d'Ivoire,2010,Primary,384,2188.6
+Croatia,2010,Primary,191,240
+Cuba,2010,Primary,192,1123.6
+Curaçao,2010,Primary,531,21.7
+Cyprus,2010,Primary,196,122.4
+Czech Republic,2010,Primary,203,34.7
+Democratic People's Republic of Korea,2010,Primary,408,1096.5
+Democratic Republic of the Congo,2010,Primary,180,5480.6
+Denmark,2010,Primary,208,16.7
+Dominican Republic,2010,Primary,214,748.5
+Ecuador,2010,Primary,218,2553.8
+Egypt,2010,Primary,818,2876.1
+El Salvador,2010,Primary,222,739.5
+Equatorial Guinea,2010,Primary,226,231.3
+Estonia,2010,Primary,233,69.3
+Ethiopia,2010,Primary,231,6856.4
+Fiji,2010,Primary,242,133.8
+Finland,2010,Primary,246,686.5
+France,2010,Primary,250,10126.8
+French Guiana,2010,Primary,254,36.3
+French Polynesia,2010,Primary,258,24.4
+Gabon,2010,Primary,266,396.2
+Gambia,2010,Primary,270,95.4
+Georgia,2010,Primary,268,123
+Germany,2010,Primary,276,3525.1
+Ghana,2010,Primary,288,2034.5
+Greece,2010,Primary,300,2292.6
+Guadeloupe,2010,Primary,312,85.5
+Guatemala,2010,Primary,320,1871.5
+Guinea,2010,Primary,324,679.5
+Guinea-Bissau,2010,Primary,624,146
+Guyana,2010,Primary,328,82.6
+Haiti,2010,Primary,332,874.8
+Honduras,2010,Primary,340,1378.2
+Hong Kong Special Administrative Region of China,2010,Primary,344,952.7
+Hungary,2010,Primary,348,363.7
+Iceland,2010,Primary,352,6.3
+India,2010,Primary,356,122603.5
+Indonesia,2010,Primary,360,56661.3
+Iran (Islamic Republic of),2010,Primary,364,9910.4
+Iraq,2010,Primary,368,5146.4
+Ireland,2010,Primary,372,664.6
+Israel,2010,Primary,376,796.8
+Italy,2010,Primary,380,9122.1
+Jamaica,2010,Primary,388,269.4
+Japan,2010,Primary,392,4153.7
+Jordan,2010,Primary,400,725.8
+Kazakhstan,2010,Primary,398,398.7
+Kenya,2010,Primary,404,4326
+Kiribati,2010,Primary,296,12.1
+Kuwait,2010,Primary,414,239.2
+Kyrgyzstan,2010,Primary,417,256.9
+Lao People's Democratic Republic,2010,Primary,418,991.4
+Latvia,2010,Primary,428,75.5
+Lebanon,2010,Primary,422,710.5
+Lesotho,2010,Primary,426,416.5
+Liberia,2010,Primary,430,298.7
+Lithuania,2010,Primary,440,243.1
+Luxembourg,2010,Primary,442,85.1
+Macao Special Administrative Region of China,2010,Primary,446,80.6
+Madagascar,2010,Primary,450,2586.6
+Malawi,2010,Primary,454,1220.1
+Malaysia,2010,Primary,458,2051.7
+Maldives,2010,Primary,462,98.1
+Mali,2010,Primary,466,614.4
+Malta,2010,Primary,470,65.7
+Martinique,2010,Primary,474,72.6
+Mauritius,2010,Primary,480,223.5
+Mexico,2010,Primary,484,17813.5
+Micronesia (Federated States of),2010,Primary,583,8.6
+Mongolia,2010,Primary,496,202.8
+Montenegro,2010,Primary,499,34.3
+Morocco,2010,Primary,504,3737.5
+Mozambique,2010,Primary,508,661.7
+Myanmar,2010,Primary,104,8025.6
+Namibia,2010,Primary,516,337.8
+Nepal,2010,Primary,524,2664
+Netherlands,2010,Primary,528,1571.2
+New Caledonia,2010,Primary,540,23
+New Zealand,2010,Primary,554,452.5
+Nicaragua,2010,Primary,558,882.3
+Niger,2010,Primary,562,960.4
+Nigeria,2010,Primary,566,16566.4
+Norway,2010,Primary,578,16.6
+Occupied Palestinian Territory,2010,Primary,275,327
+Oman,2010,Primary,512,359.7
+Pakistan,2010,Primary,586,11155.2
+Panama,2010,Primary,591,650.1
+Paraguay,2010,Primary,600,1320.8
+Peru,2010,Primary,604,2463
+Philippines,2010,Primary,608,13700.4
+Poland,2010,Primary,616,1358.4
+Portugal,2010,Primary,620,1191.5
+Puerto Rico,2010,Primary,630,235.4
+Qatar,2010,Primary,634,320.8
+Republic of Korea,2010,Primary,410,4383
+Republic of Moldova,2010,Primary,498,243
+Reunion,2010,Primary,638,167
+Romania,2010,Primary,642,1681.6
+Russian Federation,2010,Primary,643,8285.4
+Rwanda,2010,Primary,646,1027
+Saint Lucia,2010,Primary,662,53.8
+Saint Vincent and the Grenadines,2010,Primary,670,35.9
+Samoa,2010,Primary,882,41
+Sao Tome and Principe,2010,Primary,678,27.2
+Saudi Arabia,2010,Primary,682,2959.3
+Senegal,2010,Primary,686,1346
+Serbia,2010,Primary,688,558.1
+Sierra Leone,2010,Primary,694,355.5
+Singapore,2010,Primary,702,261.2
+Slovakia,2010,Primary,703,99.3
+Slovenia,2010,Primary,705,52.8
+Solomon Islands,2010,Primary,90,103.2
+Somalia,2010,Primary,706,350.8
+South Africa,2010,Primary,710,4945.5
+South Sudan,2010,Primary,728,753
+Spain,2010,Primary,724,5858.3
+Sri Lanka,2010,Primary,144,1670.5
+Sudan,2010,Primary,729,601.4
+Suriname,2010,Primary,740,99.8
+Swaziland,2010,Primary,748,190.7
+Sweden,2010,Primary,752,1014.9
+Switzerland,2010,Primary,756,487.4
+Syrian Arab Republic,2010,Primary,760,2349.5
+Taiwan Province of China,2010,Primary,158,2713.8
+Tajikistan,2010,Primary,762,138.4
+Thailand,2010,Primary,764,23801.9
+The former Yugoslav Republic of Macedonia,2010,Primary,807,149.4
+Timor-Leste,2010,Primary,626,44.9
+Togo,2010,Primary,768,961.8
+Tonga,2010,Primary,776,13.2
+Trinidad and Tobago,2010,Primary,780,196.9
+Tunisia,2010,Primary,788,2063.2
+Turkey,2010,Primary,792,14920.7
+Turkmenistan,2010,Primary,795,68.1
+Uganda,2010,Primary,800,4941.2
+Ukraine,2010,Primary,804,1674.8
+United Arab Emirates,2010,Primary,784,824.2
+United Kingdom of Great Britain and Northern Ireland,2010,Primary,826,0
+United Republic of Tanzania,2010,Primary,834,13751.2
+United States of America,2010,Primary,840,9853.3
+Uruguay,2010,Primary,858,917.2
+Vanuatu,2010,Primary,548,43.3
+Venezuela (Bolivarian Republic of),2010,Primary,862,2969
+Viet Nam,2010,Primary,704,18369.8
+World,2010,Primary,900,800371.1
+Yemen,2010,Primary,887,415.1
+Zambia,2010,Primary,894,1718.4
+Zimbabwe,2010,Primary,716,1418.2
+Afghanistan,2010,Lower Secondary,4,0
+Albania,2010,Lower Secondary,8,1022.2
+Algeria,2010,Lower Secondary,12,7676.9
+Angola,2010,Lower Secondary,24,884.1
+Argentina,2010,Lower Secondary,32,3429.5
+Armenia,2010,Lower Secondary,51,269.8
+Aruba,2010,Lower Secondary,533,25.9
+Australia,2010,Lower Secondary,36,1055.2
+Austria,2010,Lower Secondary,40,1387.5
+Azerbaijan,2010,Lower Secondary,31,1128.9
+Bahamas,2010,Lower Secondary,44,22.9
+Bahrain,2010,Lower Secondary,48,176.7
+Bangladesh,2010,Lower Secondary,50,16865.8
+Belarus,2010,Lower Secondary,112,755.3
+Belgium,2010,Lower Secondary,56,2434
+Belize,2010,Lower Secondary,84,24.8
+Benin,2010,Lower Secondary,204,519.6
+Bhutan,2010,Lower Secondary,64,95.9
+Bolivia (Plurinational State of),2010,Lower Secondary,68,1855.1
+Bosnia and Herzegovina,2010,Lower Secondary,70,649.9
+Botswana,2010,Lower Secondary,72,321.4
+Brazil,2010,Lower Secondary,76,28939.4
+Bulgaria,2010,Lower Secondary,100,1600.1
+Burkina Faso,2010,Lower Secondary,854,607.8
+Burundi,2010,Lower Secondary,108,219.3
+Cambodia,2010,Lower Secondary,116,1384.5
+Cameroon,2010,Lower Secondary,120,2058.9
+Canada,2010,Lower Secondary,124,4198
+Cape Verde,2010,Lower Secondary,132,76.6
+Central African Republic,2010,Lower Secondary,140,441.8
+Chad,2010,Lower Secondary,148,349.9
+Chile,2010,Lower Secondary,152,4031.8
+China,2010,Lower Secondary,156,485809.3
+Colombia,2010,Lower Secondary,170,3528.1
+Comoros,2010,Lower Secondary,174,59.1
+Congo,2010,Lower Secondary,178,472.6
+Costa Rica,2010,Lower Secondary,188,460.1
+Cote d'Ivoire,2010,Lower Secondary,384,1124.1
+Croatia,2010,Lower Secondary,191,807.3
+Cuba,2010,Lower Secondary,192,3121.3
+Curaçao,2010,Lower Secondary,531,48.6
+Cyprus,2010,Lower Secondary,196,133.3
+Czech Republic,2010,Lower Secondary,203,1766.5
+Democratic People's Republic of Korea,2010,Lower Secondary,408,0
+Democratic Republic of the Congo,2010,Lower Secondary,180,9125.3
+Denmark,2010,Lower Secondary,208,1557.7
+Dominican Republic,2010,Lower Secondary,214,1762.2
+Ecuador,2010,Lower Secondary,218,1811.8
+Egypt,2010,Lower Secondary,818,6846.8
+El Salvador,2010,Lower Secondary,222,930
+Equatorial Guinea,2010,Lower Secondary,226,140.6
+Estonia,2010,Lower Secondary,233,235.9
+Ethiopia,2010,Lower Secondary,231,1975
+Fiji,2010,Lower Secondary,242,218.5
+Finland,2010,Lower Secondary,246,690.9
+France,2010,Lower Secondary,250,7313.7
+French Guiana,2010,Lower Secondary,254,22.9
+French Polynesia,2010,Lower Secondary,258,44.8
+Gabon,2010,Lower Secondary,266,186.5
+Gambia,2010,Lower Secondary,270,115.8
+Georgia,2010,Lower Secondary,268,338.4
+Germany,2010,Lower Secondary,276,12702
+Ghana,2010,Lower Secondary,288,4816.4
+Greece,2010,Lower Secondary,300,1303.6
+Guadeloupe,2010,Lower Secondary,312,52.7
+Guatemala,2010,Lower Secondary,320,1256.4
+Guinea,2010,Lower Secondary,324,516.5
+Guinea-Bissau,2010,Lower Secondary,624,68.1
+Guyana,2010,Lower Secondary,328,171.2
+Haiti,2010,Lower Secondary,332,933.2
+Honduras,2010,Lower Secondary,340,507.6
+Hong Kong Special Administrative Region of China,2010,Lower Secondary,344,1183.9
+Hungary,2010,Lower Secondary,348,2340
+Iceland,2010,Lower Secondary,352,99.4
+India,2010,Lower Secondary,356,119264.1
+Indonesia,2010,Lower Secondary,360,36795
+Iran (Islamic Republic of),2010,Lower Secondary,364,14214.1
+Iraq,2010,Lower Secondary,368,2477.7
+Ireland,2010,Lower Secondary,372,591.6
+Israel,2010,Lower Secondary,376,1044.2
+Italy,2010,Lower Secondary,380,16562.6
+Jamaica,2010,Lower Secondary,388,1106.3
+Japan,2010,Lower Secondary,392,19544.2
+Jordan,2010,Lower Secondary,400,696.8
+Kazakhstan,2010,Lower Secondary,398,1553.5
+Kenya,2010,Lower Secondary,404,6497.8
+Kiribati,2010,Lower Secondary,296,14.8
+Kuwait,2010,Lower Secondary,414,697.7
+Kyrgyzstan,2010,Lower Secondary,417,688.9
+Lao People's Democratic Republic,2010,Lower Secondary,418,607.5
+Latvia,2010,Lower Secondary,428,347.7
+Lebanon,2010,Lower Secondary,422,1100.1
+Lesotho,2010,Lower Secondary,426,137.4
+Liberia,2010,Lower Secondary,430,247
+Lithuania,2010,Lower Secondary,440,380
+Luxembourg,2010,Lower Secondary,442,71.3
+Macao Special Administrative Region of China,2010,Lower Secondary,446,120.5
+Madagascar,2010,Lower Secondary,450,1007.7
+Malawi,2010,Lower Secondary,454,1863
+Malaysia,2010,Lower Secondary,458,4697.2
+Maldives,2010,Lower Secondary,462,70.8
+Mali,2010,Lower Secondary,466,424.7
+Malta,2010,Lower Secondary,470,144.2
+Martinique,2010,Lower Secondary,474,48.8
+Mauritius,2010,Lower Secondary,480,159
+Mexico,2010,Lower Secondary,484,25977.8
+Micronesia (Federated States of),2010,Lower Secondary,583,26.5
+Mongolia,2010,Lower Secondary,496,382.8
+Montenegro,2010,Lower Secondary,499,109.5
+Morocco,2010,Lower Secondary,504,3119.4
+Mozambique,2010,Lower Secondary,508,1626
+Myanmar,2010,Lower Secondary,104,8029.7
+Namibia,2010,Lower Secondary,516,234.2
+Nepal,2010,Lower Secondary,524,1988
+Netherlands,2010,Lower Secondary,528,3271.4
+New Caledonia,2010,Lower Secondary,540,36.2
+New Zealand,2010,Lower Secondary,554,370.1
+Nicaragua,2010,Lower Secondary,558,457.3
+Niger,2010,Lower Secondary,562,198.2
+Nigeria,2010,Lower Secondary,566,8407.9
+Norway,2010,Lower Secondary,578,1148.4
+Occupied Palestinian Territory,2010,Lower Secondary,275,951.5
+Oman,2010,Lower Secondary,512,366.3
+Pakistan,2010,Lower Secondary,586,14242.2
+Panama,2010,Lower Secondary,591,435.2
+Paraguay,2010,Lower Secondary,600,717
+Peru,2010,Lower Secondary,604,2761.1
+Philippines,2010,Lower Secondary,608,5239.4
+Poland,2010,Lower Secondary,616,6769.1
+Portugal,2010,Lower Secondary,620,1797.8
+Puerto Rico,2010,Lower Secondary,630,396.9
+Qatar,2010,Lower Secondary,634,186.8
+Republic of Korea,2010,Lower Secondary,410,5557.6
+Republic of Moldova,2010,Lower Secondary,498,984.1
+Reunion,2010,Lower Secondary,638,96.8
+Romania,2010,Lower Secondary,642,5009.7
+Russian Federation,2010,Lower Secondary,643,13429.7
+Rwanda,2010,Lower Secondary,646,333.9
+Saint Lucia,2010,Lower Secondary,662,13.4
+Saint Vincent and the Grenadines,2010,Lower Secondary,670,14.4
+Samoa,2010,Lower Secondary,882,44.1
+Sao Tome and Principe,2010,Lower Secondary,678,10.4
+Saudi Arabia,2010,Lower Secondary,682,4168.4
+Senegal,2010,Lower Secondary,686,712.6
+Serbia,2010,Lower Secondary,688,1690
+Sierra Leone,2010,Lower Secondary,694,403.2
+Singapore,2010,Lower Secondary,702,514.9
+Slovakia,2010,Lower Secondary,703,800.4
+Slovenia,2010,Lower Secondary,705,417.7
+Solomon Islands,2010,Lower Secondary,90,40.3
+Somalia,2010,Lower Secondary,706,670.1
+South Africa,2010,Lower Secondary,710,11146.3
+South Sudan,2010,Lower Secondary,728,0
+Spain,2010,Lower Secondary,724,11666.6
+Sri Lanka,2010,Lower Secondary,144,4072.8
+Sudan,2010,Lower Secondary,729,2133.8
+Suriname,2010,Lower Secondary,740,159
+Swaziland,2010,Lower Secondary,748,121.8
+Sweden,2010,Lower Secondary,752,1488.9
+Switzerland,2010,Lower Secondary,756,1198.4
+Syrian Arab Republic,2010,Lower Secondary,760,2046.2
+Taiwan Province of China,2010,Lower Secondary,158,3805.1
+Tajikistan,2010,Lower Secondary,762,812.5
+Thailand,2010,Lower Secondary,764,8182.4
+The former Yugoslav Republic of Macedonia,2010,Lower Secondary,807,382.5
+Timor-Leste,2010,Lower Secondary,626,85.3
+Togo,2010,Lower Secondary,768,277.9
+Tonga,2010,Lower Secondary,776,33.9
+Trinidad and Tobago,2010,Lower Secondary,780,276
+Tunisia,2010,Lower Secondary,788,2312.8
+Turkey,2010,Lower Secondary,792,13915.2
+Turkmenistan,2010,Lower Secondary,795,518.3
+Uganda,2010,Lower Secondary,800,2046.4
+Ukraine,2010,Lower Secondary,804,5163.7
+United Arab Emirates,2010,Lower Secondary,784,1391.6
+United Kingdom of Great Britain and Northern Ireland,2010,Lower Secondary,826,18540.6
+United Republic of Tanzania,2010,Lower Secondary,834,2161
+United States of America,2010,Lower Secondary,840,28295.4
+Uruguay,2010,Lower Secondary,858,710.5
+Vanuatu,2010,Lower Secondary,548,24
+Venezuela (Bolivarian Republic of),2010,Lower Secondary,862,5164.4
+Viet Nam,2010,Lower Secondary,704,21872.3
+World,2010,Lower Secondary,900,1165893.5
+Yemen,2010,Lower Secondary,887,0
+Zambia,2010,Lower Secondary,894,1457.5
+Zimbabwe,2010,Lower Secondary,716,2006
+Afghanistan,2010,Upper Secondary,4,1050
+Albania,2010,Upper Secondary,8,702.3
+Algeria,2010,Upper Secondary,12,7264.7
+Angola,2010,Upper Secondary,24,414.8
+Argentina,2010,Upper Secondary,32,7680.3
+Armenia,2010,Upper Secondary,51,1496
+Aruba,2010,Upper Secondary,533,8.7
+Australia,2010,Upper Secondary,36,9940.8
+Austria,2010,Upper Secondary,40,3464.7
+Azerbaijan,2010,Upper Secondary,31,4779
+Bahamas,2010,Upper Secondary,44,153.8
+Bahrain,2010,Upper Secondary,48,238.4
+Bangladesh,2010,Upper Secondary,50,14472.6
+Belarus,2010,Upper Secondary,112,5116.4
+Belgium,2010,Upper Secondary,56,3099.5
+Belize,2010,Upper Secondary,84,40.9
+Benin,2010,Upper Secondary,204,268.2
+Bhutan,2010,Upper Secondary,64,24.5
+Bolivia (Plurinational State of),2010,Upper Secondary,68,1389.4
+Bosnia and Herzegovina,2010,Upper Secondary,70,1553.2
+Botswana,2010,Upper Secondary,72,270.5
+Brazil,2010,Upper Secondary,76,39150.2
+Bulgaria,2010,Upper Secondary,100,2877.2
+Burkina Faso,2010,Upper Secondary,854,251.1
+Burundi,2010,Upper Secondary,108,89.5
+Cambodia,2010,Upper Secondary,116,581.1
+Cameroon,2010,Upper Secondary,120,1048.7
+Canada,2010,Upper Secondary,124,7165.7
+Cape Verde,2010,Upper Secondary,132,23.5
+Central African Republic,2010,Upper Secondary,140,123
+Chad,2010,Upper Secondary,148,154.6
+Chile,2010,Upper Secondary,152,5012.2
+China,2010,Upper Secondary,156,188097.3
+Colombia,2010,Upper Secondary,170,8501
+Comoros,2010,Upper Secondary,174,29.5
+Congo,2010,Upper Secondary,178,177.3
+Costa Rica,2010,Upper Secondary,188,608.3
+Cote d'Ivoire,2010,Upper Secondary,384,508.3
+Croatia,2010,Upper Secondary,191,1915.3
+Cuba,2010,Upper Secondary,192,3576.6
+Curaçao,2010,Upper Secondary,531,25.3
+Cyprus,2010,Upper Secondary,196,341.5
+Czech Republic,2010,Upper Secondary,203,5606.8
+Democratic People's Republic of Korea,2010,Upper Secondary,408,14299.4
+Democratic Republic of the Congo,2010,Upper Secondary,180,4646.2
+Denmark,2010,Upper Secondary,208,1829.4
+Dominican Republic,2010,Upper Secondary,214,1236.9
+Ecuador,2010,Upper Secondary,218,2096.6
+Egypt,2010,Upper Secondary,818,18088
+El Salvador,2010,Upper Secondary,222,629.3
+Equatorial Guinea,2010,Upper Secondary,226,47
+Estonia,2010,Upper Secondary,233,398.2
+Ethiopia,2010,Upper Secondary,231,2222.5
+Fiji,2010,Upper Secondary,242,132.5
+Finland,2010,Upper Secondary,246,1746.8
+France,2010,Upper Secondary,250,20298.5
+French Guiana,2010,Upper Secondary,254,39.9
+French Polynesia,2010,Upper Secondary,258,83.7
+Gabon,2010,Upper Secondary,266,53.4
+Gambia,2010,Upper Secondary,270,88.5
+Georgia,2010,Upper Secondary,268,1665.1
+Germany,2010,Upper Secondary,276,33995.9
+Ghana,2010,Upper Secondary,288,1774.4
+Greece,2010,Upper Secondary,300,2897.5
+Guadeloupe,2010,Upper Secondary,312,116.5
+Guatemala,2010,Upper Secondary,320,1041.7
+Guinea,2010,Upper Secondary,324,366.6
+Guinea-Bissau,2010,Upper Secondary,624,84.8
+Guyana,2010,Upper Secondary,328,175.4
+Haiti,2010,Upper Secondary,332,1022.2
+Honduras,2010,Upper Secondary,340,528.7
+Hong Kong Special Administrative Region of China,2010,Upper Secondary,344,1758.3
+Hungary,2010,Upper Secondary,348,3947.5
+Iceland,2010,Upper Secondary,352,75.5
+India,2010,Upper Secondary,356,192006.4
+Indonesia,2010,Upper Secondary,360,41242
+Iran (Islamic Republic of),2010,Upper Secondary,364,13855.3
+Iraq,2010,Upper Secondary,368,1362.2
+Ireland,2010,Upper Secondary,372,939.5
+Israel,2010,Upper Secondary,376,1459.9
+Italy,2010,Upper Secondary,380,16885.7
+Jamaica,2010,Upper Secondary,388,252.1
+Japan,2010,Upper Secondary,392,51010.5
+Jordan,2010,Upper Secondary,400,1004.3
+Kazakhstan,2010,Upper Secondary,398,7648.2
+Kenya,2010,Upper Secondary,404,3757
+Kiribati,2010,Upper Secondary,296,22.7
+Kuwait,2010,Upper Secondary,414,361.8
+Kyrgyzstan,2010,Upper Secondary,417,2360.2
+Lao People's Democratic Republic,2010,Upper Secondary,418,395.3
+Latvia,2010,Upper Secondary,428,952.7
+Lebanon,2010,Upper Secondary,422,593.9
+Lesotho,2010,Upper Secondary,426,108.6
+Liberia,2010,Upper Secondary,430,289.1
+Lithuania,2010,Upper Secondary,440,764.4
+Luxembourg,2010,Upper Secondary,442,154
+Macao Special Administrative Region of China,2010,Upper Secondary,446,131.9
+Madagascar,2010,Upper Secondary,450,370.5
+Malawi,2010,Upper Secondary,454,735.9
+Malaysia,2010,Upper Secondary,458,7997.5
+Maldives,2010,Upper Secondary,462,9.9
+Mali,2010,Upper Secondary,466,210.2
+Malta,2010,Upper Secondary,470,64.2
+Martinique,2010,Upper Secondary,474,105
+Mauritius,2010,Upper Secondary,480,285.4
+Mexico,2010,Upper Secondary,484,13130
+Micronesia (Federated States of),2010,Upper Secondary,583,17.4
+Mongolia,2010,Upper Secondary,496,903.8
+Montenegro,2010,Upper Secondary,499,257
+Morocco,2010,Upper Secondary,504,2184.3
+Mozambique,2010,Upper Secondary,508,614.2
+Myanmar,2010,Upper Secondary,104,3197.5
+Namibia,2010,Upper Secondary,516,235.1
+Nepal,2010,Upper Secondary,524,3639.4
+Netherlands,2010,Upper Secondary,528,5249.4
+New Caledonia,2010,Upper Secondary,540,65
+New Zealand,2010,Upper Secondary,554,1326.6
+Nicaragua,2010,Upper Secondary,558,554.5
+Niger,2010,Upper Secondary,562,48.7
+Nigeria,2010,Upper Secondary,566,17081.4
+Norway,2010,Upper Secondary,578,1582.9
+Occupied Palestinian Territory,2010,Upper Secondary,275,494.2
+Oman,2010,Upper Secondary,512,498.4
+Pakistan,2010,Upper Secondary,586,17589.8
+Panama,2010,Upper Secondary,591,683.5
+Paraguay,2010,Upper Secondary,600,683.6
+Peru,2010,Upper Secondary,604,7519.4
+Philippines,2010,Upper Secondary,608,26303.1
+Poland,2010,Upper Secondary,616,17754.9
+Portugal,2010,Upper Secondary,620,1431.3
+Puerto Rico,2010,Upper Secondary,630,1265.6
+Qatar,2010,Upper Secondary,634,335.2
+Republic of Korea,2010,Upper Secondary,410,16301.9
+Republic of Moldova,2010,Upper Secondary,498,1641.7
+Reunion,2010,Upper Secondary,638,178.5
+Romania,2010,Upper Secondary,642,6902.5
+Russian Federation,2010,Upper Secondary,643,71344.8
+Rwanda,2010,Upper Secondary,646,267.2
+Saint Lucia,2010,Upper Secondary,662,35.8
+Saint Vincent and the Grenadines,2010,Upper Secondary,670,16.6
+Samoa,2010,Upper Secondary,882,13.9
+Sao Tome and Principe,2010,Upper Secondary,678,4.9
+Saudi Arabia,2010,Upper Secondary,682,4353
+Senegal,2010,Upper Secondary,686,420.1
+Serbia,2010,Upper Secondary,688,3644.6
+Sierra Leone,2010,Upper Secondary,694,273
+Singapore,2010,Upper Secondary,702,915.6
+Slovakia,2010,Upper Secondary,703,2807
+Slovenia,2010,Upper Secondary,705,962.3
+Solomon Islands,2010,Upper Secondary,90,30.5
+Somalia,2010,Upper Secondary,706,348.2
+South Africa,2010,Upper Secondary,710,10842.3
+South Sudan,2010,Upper Secondary,728,562.1
+Spain,2010,Upper Secondary,724,7997
+Sri Lanka,2010,Upper Secondary,144,4043.8
+Sudan,2010,Upper Secondary,729,2411.9
+Suriname,2010,Upper Secondary,740,65.5
+Swaziland,2010,Upper Secondary,748,136.4
+Sweden,2010,Upper Secondary,752,3009
+Switzerland,2010,Upper Secondary,756,3139
+Syrian Arab Republic,2010,Upper Secondary,760,1488.3
+Taiwan Province of China,2010,Upper Secondary,158,6219.7
+Tajikistan,2010,Upper Secondary,762,3059
+Thailand,2010,Upper Secondary,764,11295.7
+The former Yugoslav Republic of Macedonia,2010,Upper Secondary,807,698.6
+Timor-Leste,2010,Upper Secondary,626,130.2
+Togo,2010,Upper Secondary,768,254.4
+Tonga,2010,Upper Secondary,776,9.7
+Trinidad and Tobago,2010,Upper Secondary,780,266.4
+Tunisia,2010,Upper Secondary,788,1016.3
+Turkey,2010,Upper Secondary,792,10775.2
+Turkmenistan,2010,Upper Secondary,795,2566.7
+Uganda,2010,Upper Secondary,800,742.8
+Ukraine,2010,Upper Secondary,804,25215.3
+United Arab Emirates,2010,Upper Secondary,784,2045.2
+United Kingdom of Great Britain and Northern Ireland,2010,Upper Secondary,826,18026.6
+United Republic of Tanzania,2010,Upper Secondary,834,383.5
+United States of America,2010,Upper Secondary,840,128068.2
+Uruguay,2010,Upper Secondary,858,462.4
+Vanuatu,2010,Upper Secondary,548,16.9
+Venezuela (Bolivarian Republic of),2010,Upper Secondary,862,5679
+Viet Nam,2010,Upper Secondary,704,8769.6
+World,2010,Upper Secondary,900,1315111.1
+Yemen,2010,Upper Secondary,887,2012.5
+Zambia,2010,Upper Secondary,894,711.6
+Zimbabwe,2010,Upper Secondary,716,2653.2
+Afghanistan,2010,Post Secondary,4,329.7
+Albania,2010,Post Secondary,8,261.4
+Algeria,2010,Post Secondary,12,2509.3
+Angola,2010,Post Secondary,24,23.6
+Argentina,2010,Post Secondary,32,4939.8
+Armenia,2010,Post Secondary,51,504.1
+Aruba,2010,Post Secondary,533,16.2
+Australia,2010,Post Secondary,36,5743.2
+Austria,2010,Post Secondary,40,1539.3
+Azerbaijan,2010,Post Secondary,31,898.6
+Bahamas,2010,Post Secondary,44,77.3
+Bahrain,2010,Post Secondary,48,174.8
+Bangladesh,2010,Post Secondary,50,3506.5
+Belarus,2010,Post Secondary,112,1601.4
+Belgium,2010,Post Secondary,56,2160.8
+Belize,2010,Post Secondary,84,25.4
+Benin,2010,Post Secondary,204,113.4
+Bhutan,2010,Post Secondary,64,27.8
+Bolivia (Plurinational State of),2010,Post Secondary,68,892.4
+Bosnia and Herzegovina,2010,Post Secondary,70,415.8
+Botswana,2010,Post Secondary,72,185.6
+Brazil,2010,Post Secondary,76,13930.6
+Bulgaria,2010,Post Secondary,100,1430.5
+Burkina Faso,2010,Post Secondary,854,88.7
+Burundi,2010,Post Secondary,108,59.9
+Cambodia,2010,Post Secondary,116,198.2
+Cameroon,2010,Post Secondary,120,599.9
+Canada,2010,Post Secondary,124,15231.1
+Cape Verde,2010,Post Secondary,132,12.3
+Central African Republic,2010,Post Secondary,140,37.9
+Chad,2010,Post Secondary,148,81.6
+Chile,2010,Post Secondary,152,1728.4
+China,2010,Post Secondary,156,118462.1
+Colombia,2010,Post Secondary,170,5109.5
+Comoros,2010,Post Secondary,174,32.5
+Congo,2010,Post Secondary,178,128.9
+Costa Rica,2010,Post Secondary,188,553.4
+Cote d'Ivoire,2010,Post Secondary,384,355.4
+Croatia,2010,Post Secondary,191,593.9
+Cuba,2010,Post Secondary,192,898.1
+Curaçao,2010,Post Secondary,531,16.7
+Cyprus,2010,Post Secondary,196,276.8
+Czech Republic,2010,Post Secondary,203,1557.6
+Democratic People's Republic of Korea,2010,Post Secondary,408,3415.4
+Democratic Republic of the Congo,2010,Post Secondary,180,1292.3
+Denmark,2010,Post Secondary,208,1143.9
+Dominican Republic,2010,Post Secondary,214,914.3
+Ecuador,2010,Post Secondary,218,1521.4
+Egypt,2010,Post Secondary,818,9364
+El Salvador,2010,Post Secondary,222,366.4
+Equatorial Guinea,2010,Post Secondary,226,23.5
+Estonia,2010,Post Secondary,233,423.9
+Ethiopia,2010,Post Secondary,231,574.1
+Fiji,2010,Post Secondary,242,92.6
+Finland,2010,Post Secondary,246,1357.6
+France,2010,Post Secondary,250,12749
+French Guiana,2010,Post Secondary,254,20.6
+French Polynesia,2010,Post Secondary,258,34.6
+Gabon,2010,Post Secondary,266,67.6
+Gambia,2010,Post Secondary,270,28.4
+Georgia,2010,Post Secondary,268,1346.8
+Germany,2010,Post Secondary,276,19336.3
+Ghana,2010,Post Secondary,288,663.5
+Greece,2010,Post Secondary,300,2388.4
+Guadeloupe,2010,Post Secondary,312,51.4
+Guatemala,2010,Post Secondary,320,431
+Guinea,2010,Post Secondary,324,271
+Guinea-Bissau,2010,Post Secondary,624,12.9
+Guyana,2010,Post Secondary,328,43.8
+Haiti,2010,Post Secondary,332,66.2
+Honduras,2010,Post Secondary,340,167.6
+Hong Kong Special Administrative Region of China,2010,Post Secondary,344,1482.8
+Hungary,2010,Post Secondary,348,1850.7
+Iceland,2010,Post Secondary,352,70.2
+India,2010,Post Secondary,356,76726.2
+Indonesia,2010,Post Secondary,360,11434
+Iran (Islamic Republic of),2010,Post Secondary,364,6881.1
+Iraq,2010,Post Secondary,368,2025.1
+Ireland,2010,Post Secondary,372,1445.9
+Israel,2010,Post Secondary,376,1715.7
+Italy,2010,Post Secondary,380,6424.5
+Jamaica,2010,Post Secondary,388,298.7
+Japan,2010,Post Secondary,392,35552
+Jordan,2010,Post Secondary,400,869.4
+Kazakhstan,2010,Post Secondary,398,2531.5
+Kenya,2010,Post Secondary,404,1289.3
+Kiribati,2010,Post Secondary,296,1.4
+Kuwait,2010,Post Secondary,414,296.6
+Kyrgyzstan,2010,Post Secondary,417,459.1
+Lao People's Democratic Republic,2010,Post Secondary,418,351
+Latvia,2010,Post Secondary,428,407.6
+Lebanon,2010,Post Secondary,422,519.3
+Lesotho,2010,Post Secondary,426,63
+Liberia,2010,Post Secondary,430,35.7
+Lithuania,2010,Post Secondary,440,1219.2
+Luxembourg,2010,Post Secondary,442,107.8
+Macao Special Administrative Region of China,2010,Post Secondary,446,83
+Madagascar,2010,Post Secondary,450,239
+Malawi,2010,Post Secondary,454,91.7
+Malaysia,2010,Post Secondary,458,2847.7
+Maldives,2010,Post Secondary,462,13.2
+Mali,2010,Post Secondary,466,181
+Malta,2010,Post Secondary,470,65.5
+Martinique,2010,Post Secondary,474,50.4
+Mauritius,2010,Post Secondary,480,45.1
+Mexico,2010,Post Secondary,484,9957.3
+Micronesia (Federated States of),2010,Post Secondary,583,5.7
+Mongolia,2010,Post Secondary,496,407.8
+Montenegro,2010,Post Secondary,499,84.3
+Morocco,2010,Post Secondary,504,1433.1
+Mozambique,2010,Post Secondary,508,66.8
+Myanmar,2010,Post Secondary,104,2490.7
+Namibia,2010,Post Secondary,516,94.1
+Nepal,2010,Post Secondary,524,439.8
+Netherlands,2010,Post Secondary,528,3403.1
+New Caledonia,2010,Post Secondary,540,43.7
+New Zealand,2010,Post Secondary,554,1268.7
+Nicaragua,2010,Post Secondary,558,323.8
+Niger,2010,Post Secondary,562,75.2
+Nigeria,2010,Post Secondary,566,7787.5
+Norway,2010,Post Secondary,578,1210.7
+Occupied Palestinian Territory,2010,Post Secondary,275,357.1
+Oman,2010,Post Secondary,512,340.3
+Pakistan,2010,Post Secondary,586,5069.2
+Panama,2010,Post Secondary,591,439.3
+Paraguay,2010,Post Secondary,600,438.4
+Peru,2010,Post Secondary,604,4011.4
+Philippines,2010,Post Secondary,608,8520.6
+Poland,2010,Post Secondary,616,6921.4
+Portugal,2010,Post Secondary,620,1344.1
+Puerto Rico,2010,Post Secondary,630,802.3
+Qatar,2010,Post Secondary,634,254.8
+Republic of Korea,2010,Post Secondary,410,12942.7
+Republic of Moldova,2010,Post Secondary,498,424.1
+Reunion,2010,Post Secondary,638,84.2
+Romania,2010,Post Secondary,642,3167.7
+Russian Federation,2010,Post Secondary,643,28211.6
+Rwanda,2010,Post Secondary,646,103.4
+Saint Lucia,2010,Post Secondary,662,19.3
+Saint Vincent and the Grenadines,2010,Post Secondary,670,9.4
+Samoa,2010,Post Secondary,882,14
+Sao Tome and Principe,2010,Post Secondary,678,0.8
+Saudi Arabia,2010,Post Secondary,682,4267.4
+Senegal,2010,Post Secondary,686,205
+Serbia,2010,Post Secondary,688,1257.6
+Sierra Leone,2010,Post Secondary,694,100.3
+Singapore,2010,Post Secondary,702,1938.6
+Slovakia,2010,Post Secondary,703,846.9
+Slovenia,2010,Post Secondary,705,327.6
+Solomon Islands,2010,Post Secondary,90,16.3
+Somalia,2010,Post Secondary,706,107
+South Africa,2010,Post Secondary,710,2158.5
+South Sudan,2010,Post Secondary,728,108.4
+Spain,2010,Post Secondary,724,10136.3
+Sri Lanka,2010,Post Secondary,144,2595.8
+Sudan,2010,Post Secondary,729,1289.4
+Suriname,2010,Post Secondary,740,22
+Swaziland,2010,Post Secondary,748,58.1
+Sweden,2010,Post Secondary,752,2320.8
+Switzerland,2010,Post Secondary,756,1699.7
+Syrian Arab Republic,2010,Post Secondary,760,1310.7
+Taiwan Province of China,2010,Post Secondary,158,5821.2
+Tajikistan,2010,Post Secondary,762,849.9
+Thailand,2010,Post Secondary,764,7091.7
+The former Yugoslav Republic of Macedonia,2010,Post Secondary,807,188.8
+Timor-Leste,2010,Post Secondary,626,37.3
+Togo,2010,Post Secondary,768,108.5
+Tonga,2010,Post Secondary,776,7.2
+Trinidad and Tobago,2010,Post Secondary,780,228.7
+Tunisia,2010,Post Secondary,788,770
+Turkey,2010,Post Secondary,792,6842.3
+Turkmenistan,2010,Post Secondary,795,407.8
+Uganda,2010,Post Secondary,800,436.5
+Ukraine,2010,Post Secondary,804,6582
+United Arab Emirates,2010,Post Secondary,784,1466.1
+United Kingdom of Great Britain and Northern Ireland,2010,Post Secondary,826,15051.4
+United Republic of Tanzania,2010,Post Secondary,834,578.2
+United States of America,2010,Post Secondary,840,77075.9
+Uruguay,2010,Post Secondary,858,247.5
+Vanuatu,2010,Post Secondary,548,4.7
+Venezuela (Bolivarian Republic of),2010,Post Secondary,862,3786.9
+Viet Nam,2010,Post Secondary,704,4419.6
+World,2010,Post Secondary,900,677788.2
+Yemen,2010,Post Secondary,887,29.5
+Zambia,2010,Post Secondary,894,636.2
+Zimbabwe,2010,Post Secondary,716,519.7
