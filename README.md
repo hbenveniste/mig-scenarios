@@ -1,1 +1,1 @@
-# mig-scenarios
+Data and code used in the following journal article: H. Benveniste, J. Crespo Cuaresma, M. Gidden, R. Muttarak (2021). “Tracing International Migration in Projections of Income Levels and Inequality across the Shared Socioeconomic Pathways." Climatic Change, 166 (39). doi: 10.1007/s10584-021-03133-w.
