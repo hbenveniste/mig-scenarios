@@ -11,16 +11,17 @@ gini = CSV.File(joinpath(@__DIR__, "../data/gini_rao/ssp_ginis.csv")) |> DataFra
 
 
 ################## Prepare population data: original SSP and no-migration version ####################
-mig0_ssp1 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/mig0_SSP1.csv")) |> DataFrame
-ssp1 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/SSP1.csv")) |> DataFrame
-mig0_ssp2 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/mig0_SSP2.csv")) |> DataFrame
-ssp2 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/SSP2.csv")) |> DataFrame
-mig0_ssp3 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/mig0_SSP3.csv")) |> DataFrame
-ssp3 = CSV.File(joinpath(@__DIR__, "../data/pop_samirkc/SSP3.csv")) |> DataFrame
-mig0_ssp4 = CSV.File(joinpath(@__DIR__, "../../data/pop_samirkc/mig0_SSP4.csv")) |> DataFrame  # file too large for Github
-ssp4 = CSV.File(joinpath(@__DIR__, "../../data/pop_samirkc/SSP4.csv")) |> DataFrame  # file too large for Github
-mig0_ssp5 = CSV.File(joinpath(@__DIR__, "../../data/pop_samirkc/mig0_SSP5.csv")) |> DataFrame  # file too large for Github
-ssp5 = CSV.File(joinpath(@__DIR__, "../../data/pop_samirkc/SSP5.csv")) |> DataFrame  # file too large for Github
+# Working version provided by Samir KC in 2019
+mig0_ssp1 = CSV.read("../../Samir_data/mig0_SSP1.csv", DataFrame)
+ssp1 = CSV.read("../../Samir_data/SSP1.csv", DataFrame)
+mig0_ssp2 = CSV.read("../../Samir_data/mig0_SSP2.csv", DataFrame)
+ssp2 = CSV.read("../../Samir_data/SSP2.csv", DataFrame)
+mig0_ssp3 = CSV.read("../../Samir_data/mig0_SSP3.csv", DataFrame)
+ssp3 = CSV.read("../../Samir_data/SSP3.csv", DataFrame)
+mig0_ssp4 = CSV.read("../../Samir_data/mig0_SSP4.csv", DataFrame)
+ssp4 = CSV.read("../../Samir_data/SSP4.csv", DataFrame)
+mig0_ssp5 = CSV.read("../../Samir_data/mig0_SSP5.csv", DataFrame)
+ssp5 = CSV.read("../../Samir_data/SSP5.csv", DataFrame)
 
 select!(mig0_ssp1, Not(:Column1))
 select!(ssp1, Not(:Column1))
@@ -38,10 +39,10 @@ ssp4[!,:scen] = repeat(["SSP4"], size(ssp4,1))
 mig0_ssp5[!,:scen] = repeat(["mig0_SSP5"], size(mig0_ssp5,1))
 ssp5[!,:scen] = repeat(["SSP5"], size(ssp5,1))
 
-permutecols!(mig0_ssp4, [2,1,3,4,5,6,7,8,9])
-permutecols!(ssp4, [2,1,3,4,5,6,7,8,9])
-permutecols!(mig0_ssp5, [2,1,3,4,5,6,7,8,9])
-permutecols!(ssp5, [2,1,3,4,5,6,7,8,9])
+select!(mig0_ssp4, [2,1,3,4,5,6,7,8,9])
+select!(ssp4, [2,1,3,4,5,6,7,8,9])
+select!(mig0_ssp5, [2,1,3,4,5,6,7,8,9])
+select!(ssp5, [2,1,3,4,5,6,7,8,9])
 
 # Join ssp datasets
 ssp = vcat(ssp1, ssp2, ssp3, ssp4, ssp5)
@@ -62,7 +63,7 @@ for name in [:inmig, :outmig]
     mig0[!,name] = map(x -> parse(Float64, x), mig0[!,name])
 end
 
-# Sum projections for all sexes and ages: population + net migration per country and time period
+# Sum projections for all sexes and ages: population per country and time period
 ssp_cye = combine(groupby(ssp, [:region, :period, :scen, :edu]), d -> sum(d.pop))
 rename!(ssp_cye, :x1 => :pop_mig)
 mig0_cye = combine(groupby(mig0, [:region, :period, :scen, :edu]), d -> sum(d.pop))
@@ -72,13 +73,99 @@ rename!(mig0_cye, :x1 => :pop_nomig)
 sspedu_6 = innerjoin(ssp_cye, mig0_cye, on = [:region, :period, :scen, :edu])
 
 
+####################### Update SSP population scenarios #################################################
+# Source:  K.C., S., Lutz, W. , Potančoková, M. , Abel, G. , Barakat, B., Eder, J., Goujon, A. , Jurasszovich, S., et al. (2020). 
+# Global population and human capital projections for Shared Socioeconomic Pathways – 2015 to 2100, Revision-2018. 
+# https://pure.iiasa.ac.at/id/eprint/17550/
+ssp1_update = CSV.read("../../Samir_data/SSP1_2018update.csv", DataFrame)
+ssp2_update = CSV.read("../../Samir_data/SSP2_2018update.csv", DataFrame)
+ssp3_update = CSV.read("../../Samir_data/SSP3_2018update.csv", DataFrame)
+ssp4_update = CSV.read("../../Samir_data/SSP4_2018update.csv", DataFrame)
+ssp5_update = CSV.read("../../Samir_data/SSP5_2018update.csv", DataFrame)
+
+ssp1_update.scen = repeat(["SSP1"], size(ssp1_update,1))
+ssp2_update.scen = repeat(["SSP2"], size(ssp2_update,1))
+ssp3_update.scen = repeat(["SSP3"], size(ssp3_update,1))
+ssp4_update.scen = repeat(["SSP4"], size(ssp4_update,1))
+ssp5_update.scen = repeat(["SSP5"], size(ssp5_update,1))
+
+ssp_update = vcat(ssp1_update, ssp2_update, ssp3_update, ssp4_update, ssp5_update)
+
+# Keep only population numbers for all age groups together (ageno_0), both sexes together (sexno = 0) and disaggregated education levels (eduno != 0), and distinct countries (isono < 900)
+filter!(
+    row -> (row.sexno == 0 && row.eduno !=0 && row.isono < 900),
+    ssp_update
+)
+select!(ssp_update, [:year,:isono,:eduno,:scen,:ageno_0])
+
+# Full update: use population sizes and education distribution of updated scenarios
+# Convert 10 education levels (Under 15, No Education, Incomplete Primary, Primary, Lower Secondary, Upper Secondary, Post Secondary, Short Post Secondary, Bachelor, Master and higher)
+# to 6 education levels (no education, some primary, primary completed, lower secondary completed, upper secondary completed, post secondary completed)
+ssp_update[!,:edu_6] = [(ssp_update[i,:eduno] == 1 || ssp_update[i,:eduno] == 2) ? "e1" : (ssp_update[i,:eduno] == 3 ? "e2" : (ssp_update[i,:eduno] == 4 ? "e3" : (ssp_update[i,:eduno] == 5 ? "e4" : (ssp_update[i,:eduno] == 6 ? "e5" : "e6")))) for i in eachindex(ssp_update[:,1])]
+
+sspedu_6[!,:region] = map(x -> parse(Int, SubString(x, 3)), sspedu_6[!,:region])
+sspedu_6 = leftjoin(
+    sspedu_6,
+    rename(
+        combine(
+            groupby(
+                ssp_update, 
+                [:year,:isono,:scen,:edu_6]
+            ), 
+            :ageno_0 => sum
+        ),
+        :year => :period, :isono => :region, :edu_6 => :edu, :ageno_0_sum => :pop_mig_update
+    ),
+    on = [:scen, :period, :region, :edu]
+)
+
+# We assume that for each country, education level, and SSP scenario, the ratio of pop_mig/pop_nomig remains the same for the update 
+sspedu_6.pop_nomig_update = sspedu_6.pop_mig_update .* sspedu_6.pop_nomig ./ sspedu_6.pop_mig
+
+# Partial update: use population sizes of updated scenarios and education distribution of earlier scenarios
+sspedu_6 = innerjoin(
+    sspedu_6,
+    combine(
+        groupby(
+            sspedu_6,
+            [:region,:period,:scen]
+        ),
+        :pop_mig => sum, :pop_nomig => sum 
+    ),
+    on = [:region,:period,:scen]
+)
+sspedu_6.popshare_mig = sspedu_6.pop_mig ./ sspedu_6.pop_mig_sum
+sspedu_6.popshare_nomig = sspedu_6.pop_nomig ./ sspedu_6.pop_nomig_sum
+
+# We assume that for each country and SSP scenario, the ratio of pop_mig_sum/pop_nomig_sum remains the same for the update 
+# and that education distribution remains the same for the update 
+sspedu_6 = leftjoin(
+    sspedu_6,
+    rename(
+        combine(
+            groupby(
+                ssp_update, 
+                [:year,:isono,:scen]
+            ), 
+            :ageno_0 => sum
+        ),
+        :year => :period, :isono => :region, :ageno_0_sum => :pop_mig_sum_update
+    ),
+    on = [:scen, :period, :region]
+)
+
+sspedu_6.pop_nomig_sum_update = sspedu_6.pop_mig_sum_update .* sspedu_6.pop_nomig_sum ./ sspedu_6.pop_mig_sum
+sspedu_6.pop_mig_updatepart = sspedu_6.pop_mig_sum_update .* sspedu_6.popshare_mig
+sspedu_6.pop_nomig_updatepart = sspedu_6.pop_nomig_sum_update .* sspedu_6.popshare_nomig
+
+
 #################################### Compute changes in Gini due to migration-related changes in education composition of the population #####################
 # Convert 6 education levels (no education, some primary, primary completed, lower secondary completed, upper secondary completed, post secondary completed)
 # to 4 education levels (no education, primary, secondary, tertiary) following KC and Lutz (2017)
 sspedu_6[!,:edu_4] = [(sspedu_6[i,:edu] == "e1") ? "noed" : ((sspedu_6[i,:edu] == "e2" || sspedu_6[i,:edu] == "e3") ? "prim" : ((sspedu_6[i,:edu] == "e4" || sspedu_6[i,:edu] == "e5") ? "sec" : "ter")) for i in 1:size(sspedu_6,1)]
 
 # Compute changes in education shares of population related to migration
-sspedu = combine(groupby(sspedu_6, [:region, :period, :scen, :edu_4]), d -> (pop_mig=sum(d.pop_mig), pop_nomig=sum(d.pop_nomig)))
+sspedu = combine(groupby(sspedu_6, [:region, :period, :scen, :edu_4]), d -> (pop_mig=sum(d.pop_mig_update), pop_nomig=sum(d.pop_nomig_update)))
 sspedu_all = combine(groupby(sspedu, [:region, :period, :scen]), d -> (pop_mig_sum=sum(d.pop_mig), pop_nomig_sum=sum(d.pop_nomig)))
 sspedu = innerjoin(sspedu, sspedu_all, on=[:region, :period, :scen])
 sspedu[!,:edushare_mig] = sspedu[!,:pop_mig] ./ sspedu[!,:pop_mig_sum] 
@@ -90,7 +177,6 @@ beta2_prim = -0.27 ; beta2_sec = -0.26 ; beta2_ter = -0.61
 sspedu[!,:beta2] = [(sspedu[i,:edu_4] == "prim") ? beta2_prim : ((sspedu[i,:edu_4] == "sec") ? beta2_sec : (sspedu[i,:edu_4] == "ter" ? beta2_ter : 0.0)) for i in 1:size(sspedu,1)]
 dgini_edu = combine(groupby(sspedu, [:region, :period, :scen]), d -> sum(d.edushare_diff .* d.beta2))
 rename!(dgini_edu, :x1 => :dgini_edu)
-dgini_edu[!,:region] = map(x -> parse(Int, SubString(x, 3)), dgini_edu[!,:region])
 
 
 #################################### Compute changes in Gini due to migration-related changes in education spending ##############################
@@ -102,7 +188,6 @@ sspeduspend = @from i in sspedu begin
     @select {i.region, i.period, i.scen, i.edu_4, i.pop_mig, i.pop_nomig}
     @collect DataFrame
 end
-sspeduspend[!,:region] = map(x -> parse(Int, SubString(x, 3)), sspeduspend[!,:region])
 educsum = combine(groupby(sspeduspend, [:region, :period, :scen]), d -> (pop_mig_sum=sum(d.pop_mig),pop_nomig_sum=sum(d.pop_nomig)))
 
 # Calculate educated population in 2010 using data from the Wittgenstein Center 
@@ -211,7 +296,7 @@ for s in ssps
         transform = [{lookup=:id, from={data=filter(row -> row[:scen] == s && row[:period] == 2100, gini), key=:region, fields=["relgini"]}}],
         projection={type=:naturalEarth1}, 
         color = {"relgini:q", scale={domain=[-0.25,0.25], scheme=:redblue}, legend={title="Relative change", symbolSize=40, labelFontSize=16}}
-    ) |> save(joinpath(@__DIR__, "../results/world_maps/", string("ginidiff_", s, "_edu.png")))
+    ) |> save(joinpath(@__DIR__, "../results/world_maps/", string("ginidiff_", s, "_edu_update.png")))
 end
 
 
@@ -247,7 +332,7 @@ for r in unique(regions[!,:worldregion])
     @vlplot(
         :line, y={"median(gini)", title="Gini with migration"},
         color = {"scen:n", scale={scheme=:category10}, legend=nothing}, 
-    ) |> save(joinpath(@__DIR__, "../results/gini_reg/", string("ginici_mig_", r,"_edu.png")))
+    ) |> save(joinpath(@__DIR__, "../results/gini_reg/", string("ginici_mig_", r,"_edu_update.png")))
 end
 for r in unique(regions[!,:worldregion])
     gini |> @filter(_.worldregion == r) |> @vlplot(
@@ -260,7 +345,7 @@ for r in unique(regions[!,:worldregion])
     @vlplot(
         :line, y={"median(gini_nomig)", title="Gini without migration"},
         color = {"scen:n", scale={scheme=:category10}, legend=nothing}, 
-    ) |> save(joinpath(@__DIR__, "../results/gini_reg/", string("ginici_nomig_", r,"_edu.png")))
+    ) |> save(joinpath(@__DIR__, "../results/gini_reg/", string("ginici_nomig_", r,"_edu_update.png")))
 end
 for r in unique(regions[!,:worldregion])
     gini |> @filter(_.worldregion == r) |> @vlplot(
@@ -273,9 +358,9 @@ for r in unique(regions[!,:worldregion])
     @vlplot(
         :line, y={"median(reldif)", title="Relative change with migration"},
         color = {"scen:n", scale={scheme=:category10}, legend={titleFontSize=16, symbolSize=40, labelFontSize=16}}, 
-    ) |> save(joinpath(@__DIR__, "../results/gini_reg/", string("ginicirel_", r,"_edu.png")))
+    ) |> save(joinpath(@__DIR__, "../results/gini_reg/", string("ginicirel_", r,"_edu_update.png")))
 end
 
 
 ####################################### Write output files with results ############################################################################
-CSV.write(joinpath(@__DIR__, "../results/gini_edu.csv"), gini)
+CSV.write(joinpath(@__DIR__, "../results/gini_edu_update.csv"), gini)

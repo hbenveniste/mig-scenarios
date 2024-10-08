@@ -1,4 +1,4 @@
-using CSV, DataFrames, DelimitedFiles
+using CSV, DataFrames, DelimitedFiles, XLSX
 using Plots, VegaLite, FileIO, VegaDatasets, FilePaths
 using Statistics, Query
 
@@ -56,37 +56,20 @@ for name in [:inmig, :outmig]
     mig0[!,name] = map(x -> parse(Float64, x), mig0[!,name])
 end
 
+# Create net migration variable
+ssp[!,:mig] = ssp[!,:inmig] .- ssp[!,:outmig]
+
 # Sum projections for all sexes and education levels: population + net migration per country and time period
-ssp_cy = rename(
-    combine(
-        groupby(
-            ssp, 
-            [:region, :period, :scen]
-        ), 
-        :pop => sum, :inmig => sum
-    ),
-    :pop_sum => :popsum, :inmig_sum => :inmigsum
-)
-mig0_cy = rename(
-    combine(
-        groupby(
-            mig0, 
-            [:region, :period, :scen]
-        ), 
-        :pop => sum
-    ),
-    :pop_sum => :popsum
-)
+ssp_cy = combine(groupby(ssp, [:region, :period, :scen]), d -> (popsum = sum(d.pop), inmigsum = sum(d.inmig), outmigsum = sum(d.outmig), migsum = sum(d.mig)))
+mig0_cy = combine(groupby(mig0, [:region, :period, :scen]), d -> sum(d.pop))
+rename!(mig0_cy, :x1 => :popsum)
 
 # Join population datasets
 sspall = innerjoin(ssp_cy, mig0_cy, on = [:region, :period, :scen], makeunique = true)
-rename!(sspall, :popsum => :pop_mig, :popsum_1 => :pop_nomig)
+rename!(sspall, :popsum => :pop_mig, :migsum => :mig_original, :popsum_1 => :pop_nomig)
 
-# Convert into iso3c country codes
-iso3c_isonum = CSV.read("../data/iso3c_isonum.csv", DataFrame)
-rename!(iso3c_isonum, :iso3c => :country, :isonum => :region)
-sspall[!,:region] = map(x -> parse(Int, SubString(x, 3)), sspall[!,:region])
-sspall = innerjoin(sspall, iso3c_isonum, on = :region)
+# Create variable for differences in population projections between mig and nomig
+sspall[!,:diffmig] = sspall[!,:pop_mig] .- sspall[!,:pop_nomig]   
 
 
 ####################### Update SSP population scenarios #################################################
@@ -113,6 +96,7 @@ filter!(
     ssp_update
 )
 
+sspall[!,:region] = map(x -> parse(Int, SubString(x, 3)), sspall[!,:region])
 sspall = leftjoin(
     sspall,
     rename(
@@ -125,15 +109,17 @@ sspall = leftjoin(
 # We assume that for each country and SSP scenario, the ratio of pop_mig/pop_nomig remains the same for the update 
 sspall.pop_nomig_update = sspall.pop_mig_update .* sspall.pop_nomig ./ sspall.pop_mig
 
-# We assume that for each country and SSP scenario, the ratio inmigsum/pop_mig remains the same for the update
+# We assume that for each country and SSP scenario, the ratios inmigsum/pop_mig and outmigsum/pop_mig remain the same for the update
 sspall.inmigsum_update = sspall.inmigsum .* sspall.pop_mig_update ./ sspall.pop_mig
+sspall.outmigsum_update = sspall.outmigsum .* sspall.pop_mig_update ./ sspall.pop_mig
+sspall.mig_original_update = sspall.inmigsum_update .- sspall.outmigsum_update
 
 # Create variable for differences in population projections between mig and nomig
 sspall[!,:diffmig_update] = sspall[!,:pop_mig_update] .- sspall[!,:pop_nomig_update]   
 
 # Keep only updated versions and rename them 
-select!(sspall, [:region,:period,:scen,:country,:pop_mig_update,:inmigsum_update,:pop_nomig_update,:diffmig_update])
-rename!(sspall, :pop_mig_update => :pop_mig, :inmigsum_update => :inmigsum, :pop_nomig_update => :pop_nomig, :diffmig_update => :diffmig)
+select!(sspall, [:region,:period,:scen,:pop_mig_update,:inmigsum_update,:outmigsum_update,:mig_original_update,:pop_nomig_update,:diffmig_update])
+rename!(sspall, :pop_mig_update => :pop_mig, :inmigsum_update => :inmigsum, :outmigsum_update => :outmigsum, :mig_original_update => :mig_original, :pop_nomig_update => :pop_nomig, :diffmig_update => :diffmig)
 
 
 #################### Prepare GDP data ################################
@@ -148,6 +134,25 @@ gdps_oecd = stack(gdp_oecd, 3:length(gdp_oecd[1,:]))
 rename!(gdps_oecd, :variable => :year, :value => :gdp)
 gdps_oecd[!,:year] = map( x -> parse(Int, String(x)), gdps_oecd[!,:year])
 
+# Convert into iso3c country codes
+iso3c_isonum = CSV.read("../data/iso3c_isonum.csv", DataFrame)
+rename!(iso3c_isonum, :iso3c => :country, :isonum => :region)
+
+sspall = leftjoin(sspall, iso3c_isonum, on = :region)
+
+# Micronesia (Federated states of) ISO numerical code is not 954, but 583. Its ISO 3 code is FSM
+[if sspall[i,:region] == 583 ; sspall[i,:country] = "FSM" end for i in 1:length(sspall[!,1])]
+
+# The Channels Islands do not have a proper ISO code, instead Jersey (832, JEY) and Guernsey (831, GGY) do. 
+# Based on census data for 2011, we attribute 60% of the Channels population to Jersey and the rest to Guernsey.
+channelsind = findall(sspall[!,:region] .== 830)
+for i in channelsind
+    push!(sspall, [831, sspall[i,:period], sspall[i,:scen], sspall[i,:pop_mig]*0.4, sspall[i,:inmigsum]*0.4, sspall[i,:outmigsum]*0.4, sspall[i,:mig_original]*0.4, sspall[i,:pop_nomig]*0.4, sspall[i,:diffmig]*0.4, "GGY"])
+    push!(sspall, [832, sspall[i,:period], sspall[i,:scen], sspall[i,:pop_mig]*0.6, sspall[i,:inmigsum]*0.6, sspall[i,:outmigsum]*0.6, sspall[i,:mig_original]*0.6, sspall[i,:pop_nomig]*0.6, sspall[i,:diffmig]*0.6, "JEY"])
+end
+deleteat!(sspall, channelsind)
+
+rename!(gdps_oecd, :year => :period, :Region => :country, :Scenario => :scen)
 sspall = innerjoin(sspall, gdps_oecd, on = [:period, :country, :scen])         
 rename!(sspall, :gdp => :gdp_mig)
 
@@ -164,13 +169,12 @@ migflow = DataFrame(
 )
 rename!(migflow, :origin => :country)
 migflow = innerjoin(migflow, sspall, on = [:country, :period, :scen])
-select!(migflow, Not([:region, :pop_nomig, :inmigsum, :diffmig]))
-rename!(migflow, :country => :origin, :pop_mig => :pop_orig, :gdp_mig => :gdp_orig, :destination => :country)
+select!(migflow, Not([:mig_original, :region, :pop_nomig, :inmigsum, :diffmig]))
+rename!(migflow, :country => :origin, :pop_mig => :pop_orig, :outmigsum => :outmig_orig, :gdp_mig => :gdp_orig, :destination => :country)
 migflow = innerjoin(migflow, sspall, on = [:country, :period, :scen])
-select!(migflow, Not([:region, :pop_nomig, :diffmig]))
+select!(migflow, Not([:mig_original, :region, :pop_nomig, :outmigsum, :diffmig]))
 rename!(migflow, :country => :destination, :pop_mig => :pop_dest, :inmigsum => :inmig_dest, :gdp_mig => :gdp_dest)
 
-# Including geographical distance
 distance = CSV.File(joinpath(@__DIR__, "../data/distance_unpop/distances.csv")) |> DataFrame
 rename!(distance, :orig => :origin, :dest => :destination)
 
@@ -260,7 +264,7 @@ migflow[!,:move_inmigbase] = migflow[!,:move_in_frac] .* migflow[!,:inmig_dest] 
 
 ###################### Prepare data for remittances ###################################################
 # Computing age of migrants at time of migration, using Samir KC's projection data
-# No migrants numbers for the updated SSPs; we assume that migrants age profiles remain the same for the update
+# No migrants numbers for the updated SSPs; we assume that migrants age distributions remain the same for the update
 agegroup = combine(groupby(ssp, [:age, :region, :period, :scen]), d -> (inmig = sum(d.inmig), pop = sum(d.pop)))
 
 iso3c_isonum = CSV.File("../data/iso3c_isonum.csv") |> DataFrame
@@ -325,7 +329,11 @@ migflow = innerjoin(migflow, lifeexp, on = [:scen, :destination, :period])
 ######################## Adding a stock variable indicating how many immigrants from a region are in another region ##############################
 # Computing the part of the migrants stock that comes from people who migrate during the projections, i.e. starting 2015
 rename!(agegroup, :country => :destination)
-migflow_all = innerjoin(migflow[:,[:scen, :origin, :destination, :period, :inmig_dest, :move_in_frac, :move_inmigbase, :lifeexp]], agegroup[:,[:scen, :destination, :period, :age, :pop, :share]], on = [:scen, :destination, :period])
+migflow_all = innerjoin(
+    migflow[:,[:scen, :origin, :destination, :period, :inmig_dest, :move_in_frac, :move_inmigbase, :lifeexp]], 
+    agegroup[:,[:scen, :destination, :period, :age, :pop, :share]], 
+    on = [:scen, :destination, :period]
+)
 l_or = length(unique(migflow_all[!,:origin]))
 l_dest = length(unique(migflow_all[!,:destination]))
 periods = unique(migflow_all[!,:period])
@@ -386,9 +394,7 @@ for o in (header):(length(countries)+header-1)
 end
 migstock.migrantstock = stock
 indmissing = findall([typeof(migstock[i,:migrantstock]) != Int64 for i in eachindex(migstock[:,1])])
-for i in indmissing
-    migstock[i,:migrantstock] = 0.0
-end 
+for i in indmissing ; migstock[i,:migrantstock] = 0.0 end
 
 # Converting into country codes
 ccode = XLSX.readdata(joinpath(@__DIR__,"../data/rem_wb/GDPpercap2017.xlsx"), "Data!A1:E218")
