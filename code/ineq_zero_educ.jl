@@ -12,16 +12,16 @@ gini = CSV.File(joinpath(@__DIR__, "../data/gini_rao/ssp_ginis.csv")) |> DataFra
 
 ################## Prepare population data: original SSP and no-migration version ####################
 # Working version provided by Samir KC in 2019
-mig0_ssp1 = CSV.read("../../Samir_data/mig0_SSP1.csv", DataFrame)
-ssp1 = CSV.read("../../Samir_data/SSP1.csv", DataFrame)
-mig0_ssp2 = CSV.read("../../Samir_data/mig0_SSP2.csv", DataFrame)
-ssp2 = CSV.read("../../Samir_data/SSP2.csv", DataFrame)
-mig0_ssp3 = CSV.read("../../Samir_data/mig0_SSP3.csv", DataFrame)
-ssp3 = CSV.read("../../Samir_data/SSP3.csv", DataFrame)
-mig0_ssp4 = CSV.read("../../Samir_data/mig0_SSP4.csv", DataFrame)
-ssp4 = CSV.read("../../Samir_data/SSP4.csv", DataFrame)
-mig0_ssp5 = CSV.read("../../Samir_data/mig0_SSP5.csv", DataFrame)
-ssp5 = CSV.read("../../Samir_data/SSP5.csv", DataFrame)
+mig0_ssp1 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP1.csv", DataFrame)
+ssp1 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1.csv", DataFrame)
+mig0_ssp2 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP2.csv", DataFrame)
+ssp2 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2.csv", DataFrame)
+mig0_ssp3 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP3.csv", DataFrame)
+ssp3 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3.csv", DataFrame)
+mig0_ssp4 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP4.csv", DataFrame)
+ssp4 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4.csv", DataFrame)
+mig0_ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP5.csv", DataFrame)
+ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5.csv", DataFrame)
 
 select!(mig0_ssp1, Not(:Column1))
 select!(ssp1, Not(:Column1))
@@ -77,11 +77,11 @@ sspedu_6 = innerjoin(ssp_cye, mig0_cye, on = [:region, :period, :scen, :edu])
 # Source:  K.C., S., Lutz, W. , Potančoková, M. , Abel, G. , Barakat, B., Eder, J., Goujon, A. , Jurasszovich, S., et al. (2020). 
 # Global population and human capital projections for Shared Socioeconomic Pathways – 2015 to 2100, Revision-2018. 
 # https://pure.iiasa.ac.at/id/eprint/17550/
-ssp1_update = CSV.read("../../Samir_data/SSP1_2018update.csv", DataFrame)
-ssp2_update = CSV.read("../../Samir_data/SSP2_2018update.csv", DataFrame)
-ssp3_update = CSV.read("../../Samir_data/SSP3_2018update.csv", DataFrame)
-ssp4_update = CSV.read("../../Samir_data/SSP4_2018update.csv", DataFrame)
-ssp5_update = CSV.read("../../Samir_data/SSP5_2018update.csv", DataFrame)
+ssp1_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1_2018update.csv", DataFrame)
+ssp2_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2_2018update.csv", DataFrame)
+ssp3_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3_2018update.csv", DataFrame)
+ssp4_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4_2018update.csv", DataFrame)
+ssp5_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5_2018update.csv", DataFrame)
 
 ssp1_update.scen = repeat(["SSP1"], size(ssp1_update,1))
 ssp2_update.scen = repeat(["SSP2"], size(ssp2_update,1))
@@ -104,6 +104,7 @@ select!(ssp_update, [:year,:isono,:eduno,:scen,:ageno_0])
 ssp_update[!,:edu_6] = [(ssp_update[i,:eduno] == 1 || ssp_update[i,:eduno] == 2) ? "e1" : (ssp_update[i,:eduno] == 3 ? "e2" : (ssp_update[i,:eduno] == 4 ? "e3" : (ssp_update[i,:eduno] == 5 ? "e4" : (ssp_update[i,:eduno] == 6 ? "e5" : "e6")))) for i in eachindex(ssp_update[:,1])]
 
 sspedu_6[!,:region] = map(x -> parse(Int, SubString(x, 3)), sspedu_6[!,:region])
+
 sspedu_6 = leftjoin(
     sspedu_6,
     rename(
@@ -162,7 +163,7 @@ sspedu_6.pop_nomig_updatepart = sspedu_6.pop_nomig_sum_update .* sspedu_6.popsha
 #################################### Compute changes in Gini due to migration-related changes in education composition of the population #####################
 # Convert 6 education levels (no education, some primary, primary completed, lower secondary completed, upper secondary completed, post secondary completed)
 # to 4 education levels (no education, primary, secondary, tertiary) following KC and Lutz (2017)
-sspedu_6[!,:edu_4] = [(sspedu_6[i,:edu] == "e1") ? "noed" : ((sspedu_6[i,:edu] == "e2" || sspedu_6[i,:edu] == "e3") ? "prim" : ((sspedu_6[i,:edu] == "e4" || sspedu_6[i,:edu] == "e5") ? "sec" : "ter")) for i in 1:size(sspedu_6,1)]
+sspedu_6[!,:edu_4] = [(sspedu_6[i,:edu] == "e1") ? "noed" : ((sspedu_6[i,:edu] == "e2" || sspedu_6[i,:edu] == "e3") ? "prim" : ((sspedu_6[i,:edu] == "e4" || sspedu_6[i,:edu] == "e5") ? "sec" : "ter")) for i in eachindex(sspedu_6[:,1])]
 
 # Compute changes in education shares of population related to migration
 sspedu = combine(groupby(sspedu_6, [:region, :period, :scen, :edu_4]), d -> (pop_mig=sum(d.pop_mig_update), pop_nomig=sum(d.pop_nomig_update)))
@@ -174,7 +175,7 @@ sspedu[!,:edushare_diff] = sspedu[!,:edushare_nomig] .- sspedu[!,:edushare_mig]
 
 # Compute resulting change to Gini according to Rao et al. (2018): beta2 coefficient in eq. (1) estimated in Table 2
 beta2_prim = -0.27 ; beta2_sec = -0.26 ; beta2_ter = -0.61
-sspedu[!,:beta2] = [(sspedu[i,:edu_4] == "prim") ? beta2_prim : ((sspedu[i,:edu_4] == "sec") ? beta2_sec : (sspedu[i,:edu_4] == "ter" ? beta2_ter : 0.0)) for i in 1:size(sspedu,1)]
+sspedu[!,:beta2] = [(sspedu[i,:edu_4] == "prim") ? beta2_prim : ((sspedu[i,:edu_4] == "sec") ? beta2_sec : (sspedu[i,:edu_4] == "ter" ? beta2_ter : 0.0)) for i in eachindex(sspedu[:,1])]
 dgini_edu = combine(groupby(sspedu, [:region, :period, :scen]), d -> sum(d.edushare_diff .* d.beta2))
 rename!(dgini_edu, :x1 => :dgini_edu)
 
@@ -208,7 +209,7 @@ educsum[!,:popindex_nomig] = educsum[!,:pop_nomig_sum] ./ educsum[!,:pop_2010]
 # Compute level index: costs of education for tertiary, secondary and primary, weighted by the population shares in each
 # Consider average costs of primary, secondary and tertiary education per student for OECD countries (p.204 in https://www.oecd.org/edu/Education-at-a-Glance-2014.pdf)
 cost_prim = 8296 ; cost_sec = 9280 ; cost_ter = 13958 ; cost_av = 9487
-sspeduspend[!,:cost] = [(sspeduspend[i,:edu_4] == "prim") ? cost_prim : ((sspeduspend[i,:edu_4] == "sec") ? cost_sec : (sspeduspend[i,:edu_4] == "ter" ? cost_ter : 0.0)) for i in 1:size(sspeduspend,1)]
+sspeduspend[!,:cost] = [(sspeduspend[i,:edu_4] == "prim") ? cost_prim : ((sspeduspend[i,:edu_4] == "sec") ? cost_sec : (sspeduspend[i,:edu_4] == "ter" ? cost_ter : 0.0)) for i in eachindex(sspeduspend[:,1])]
 sspeduspend = innerjoin(sspeduspend, select(educsum, Not([:pop_2010, :popindex_mig, :popindex_nomig])), on=[:region, :period, :scen])
 sspeduspend[!,:costweighted_mig] = sspeduspend[!,:pop_mig] ./ sspeduspend[!,:pop_mig_sum] .* sspeduspend[!,:cost] ./ cost_av
 sspeduspend[!,:costweighted_nomig] = sspeduspend[!,:pop_nomig] ./ sspeduspend[!,:pop_nomig_sum] .* sspeduspend[!,:cost] ./ cost_av
@@ -233,7 +234,7 @@ speed = vcat(speed, s_miss)
 speed_reg = load(joinpath(@__DIR__, "../data/eduspending_ifpri/speed.xls"), "gdpeducation_ppp!B151:AK160") |> DataFrame
 select!(speed_reg, [:region, Symbol("2010")])
 rename!(speed_reg, Symbol("2010") => :educspend2010)
-for i in 1:size(speed,1)
+for i in eachindex(speed[:,1])
     if ismissing(speed[i,:educspend2010])
         ind = findfirst(speed_reg[:,:region].==speed[i,:region])
         speed[i,:educspend2010] = speed_reg[ind,:educspend2010]
@@ -245,7 +246,7 @@ rename!(iso3c_isonum, :iso3c => :ISO)
 speed = innerjoin(speed, iso3c_isonum, on = :ISO)
 educsum = leftjoin(educsum, rename(select(speed, Not([:ISO,:region])), :isonum => :region), on =:region)
 av_world = speed_reg[findfirst(speed_reg[:,:region].=="World"),:educspend2010]
-educsum[!,:resindex] = [((educsum[i,:scen] == "SSP1" || educsum[i, :scen] == "SSP5") && educsum[i,:period] <= 2050 && !ismissing(educsum[i,:educspend2010]) && educsum[i,:educspend2010] < av_world) ? 0.1 * (educsum[i, :period]- 2010) : 0.0 for i in 1:size(educsum,1)]
+educsum[!,:resindex] = [((educsum[i,:scen] == "SSP1" || educsum[i, :scen] == "SSP5") && educsum[i,:period] <= 2050 && !ismissing(educsum[i,:educspend2010]) && educsum[i,:educspend2010] < av_world) ? 0.1 * (educsum[i, :period]- 2010) : 0.0 for i in eachindex(educsum[:,1])]
 
 # Compute education spending as percentage of total public spending for each country, year and scenario, with and without migration
 educsum[!,:educspend_mig] = (educsum[!,:educspend2010] .+ educsum[!,:resindex]) ./ 100 .* educsum[!, :popindex_mig] .* educsum[!, :levelindex_mig]
@@ -273,7 +274,7 @@ select!(gini, Not(:educspend_diff))
 gini[!,:gini_nomig] = gini[!,:gini] .- gini[!,:dgini_edu] .- gini[!, :dgini_eduspend]
 
 # For 2010 (before migration starts), assign same values of Gini for mig and nomig
-for i in 1:size(gini,1)
+for i in eachindex(gini[:,1])
     if gini[i,:period] == 2010
         gini[i,:gini_nomig] = gini[i, :gini]
     end

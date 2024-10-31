@@ -7,7 +7,7 @@ using Distances
 
 ########################## Prepare migration flows data ########################################
 # Using Abel (2018). Note: too large to be stored on Github; available from https://guyabel.com/publication/global-migration-estimates-by-gender/ 
-migflow_allstockdemo = CSV.File(joinpath(@__DIR__, "../../data/migflow_abel/gf_imr.csv")) |> DataFrame
+migflow_allstockdemo = CSV.File("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Abel_data/gf_imr.csv") |> DataFrame
 # Using Abel and Cohen (2019)
 migflow_alldata = CSV.File(joinpath(@__DIR__, "../data/migflow_all/ac19.csv")) |> DataFrame
 
@@ -23,7 +23,7 @@ migflow_ar = migflow_alldata[:,[:year0, :orig, :dest, :da_pb_closed]]
 
 
 ########################## Prepare population data from the Wittgenstein Centre, based on historical data from the WPP 2019 ##################################
-pop_allvariants = CSV.File(joinpath(@__DIR__, "../data/pophist_wpp17/WPP2019.csv")) |> DataFrame
+pop_allvariants = CSV.File("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Pop_hist_data/WPP2019.csv") |> DataFrame
 # We use the Medium variant, the most commonly used. Unit: thousands
 pop = @from i in pop_allvariants begin
     @where i.Variant == "Medium" && i.Time < 2016 
@@ -67,7 +67,7 @@ dist[!,:loc_dest] = [tuple(dist[!,:lat_dest][i], dist[!,:lon_dest][i]) for i in 
 dist[!,:distance] = [haversine(dist[!,:loc_or][i], dist[!,:loc_dest][i], earthradius) for i in 1:size(dist, 1)]
 
 # Add country codes
-iso3c_isonum = CSV.File("../data/iso3c_isonum.csv") |> DataFrame
+iso3c_isonum = CSV.File(joinpath(@__DIR__,"../data/iso3c_isonum.csv")) |> DataFrame
 rename!(iso3c_isonum, :isonum => :orig_code)
 distances = innerjoin(dist, iso3c_isonum, on = :orig_code)
 rename!(distances, :iso3c => :orig)
@@ -82,7 +82,7 @@ rho = CSV.File(joinpath(@__DIR__, "../data/rem_wb/rho.csv")) |> DataFrame
 phi = CSV.File(joinpath(@__DIR__,"../data/rem_wb/phi.csv")) |> DataFrame
 remittances = leftjoin(rho, phi, on = [:origin, :destination])
 # For corridors with no cost data, we assume that the cost of sending remittances is the mean of all available corridors
-for i in 1:size(remittances,1)
+for i in eachindex(remittances[:,1])
     if ismissing(remittances[i,:phi])
         remittances[i,:phi] = (remittances[i,:origin] == remittances[i,:destination] ? 0.0 : mean(phi[!,:phi]))
     end
@@ -146,7 +146,7 @@ offlang = Dict(
     "Tswana" => ["ZAF","BWA"]
 )
 
-for i in 1:size(comol,1) ; if comol[i,:orig] == comol[i,:dest] ; comol[i,:comofflang] = 1 end end
+for i in eachindex(comol[:,1]) ; if comol[i,:orig] == comol[i,:dest] ; comol[i,:comofflang] = 1 end end
 for l in offlang
     for c1 in l[2]
         for c2 in l[2]
@@ -297,7 +297,7 @@ rr3 = reg(gravity_ar, @formula(mig_ratio_tot ~ density_ratio + ypc_ratio + dista
 rr4 = reg(gravity_ar, @formula(mig_ratio_tot ~ density_ratio + ypc_ratio + distance + remshare + remcost + comofflang + fe(orig) + fe(dest) + fe(year)), Vcov.cluster(:orig, :dest), save=true)
 rr5 = reg(gravity, @formula(flow_Abel ~ pop_orig + pop_dest + ypc_orig + ypc_dest + distance + remshare + remcost + comofflang + fe(year)), Vcov.cluster(:orig, :dest), save=true)
 
-regtable(rr1, rr2, rr3, rr4, rr5; renderSettings = latexOutput(),regression_statistics=[:nobs, :r2, :r2_within])     
+regtable(rr1, rr2, rr3, rr4, rr5; render = LatexTable(),regression_statistics=[:nobs, :r2, :r2_within])     
 
 beta = DataFrame(
     regtype = ["reg_ar_yfe","reg_ar_odyfe","reg_abel_yfe"],
@@ -360,9 +360,9 @@ CSV.write(joinpath(@__DIR__,"../data/gravity_calib/fe_ratio_ar_yfe.csv"), fe_rat
 CSV.write(joinpath(@__DIR__,"../data/gravity_calib/fe_ratio_ar_odyfe.csv"), fe_ratio_ar_odyfe)
 CSV.write(joinpath(@__DIR__,"../data/gravity_calib/fe_abel_yfe.csv"), fe_abel_yfe)
 
-CSV.write(joinpath(@__DIR__,"../data/gravity_calib/gravity.csv"), gravity)
-CSV.write(joinpath(@__DIR__,"../data/gravity_calib/gravity_ar.csv"), gravity_ar)
-CSV.write(joinpath(@__DIR__,"../data/gravity_calib/data_ar.csv"), data_ar)
+CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/gravity.csv", gravity)
+CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/gravity_ar.csv", gravity_ar)
+CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/data_ar.csv", data_ar)
 
 # Main specification: year fixed effects (reg_ar_yfe). All resulting files and graphs indexed _6.
 # Robustness runs: origin/destination/year fixed effects (reg_ar_odyfe). All resulting files and graphs indexed _7.

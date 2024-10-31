@@ -5,16 +5,16 @@ using Statistics, Query
 
 ################## Prepare population data: original SSP and no-migration version ####################
 # Working version provided by Samir KC in 2019
-mig0_ssp1 = CSV.read("../../Samir_data/mig0_SSP1.csv", DataFrame)
-ssp1 = CSV.read("../../Samir_data/SSP1.csv", DataFrame)
-mig0_ssp2 = CSV.read("../../Samir_data/mig0_SSP2.csv", DataFrame)
-ssp2 = CSV.read("../../Samir_data/SSP2.csv", DataFrame)
-mig0_ssp3 = CSV.read("../../Samir_data/mig0_SSP3.csv", DataFrame)
-ssp3 = CSV.read("../../Samir_data/SSP3.csv", DataFrame)
-mig0_ssp4 = CSV.read("../../Samir_data/mig0_SSP4.csv", DataFrame)
-ssp4 = CSV.read("../../Samir_data/SSP4.csv", DataFrame)
-mig0_ssp5 = CSV.read("../../Samir_data/mig0_SSP5.csv", DataFrame)
-ssp5 = CSV.read("../../Samir_data/SSP5.csv", DataFrame)
+mig0_ssp1 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP1.csv", DataFrame)
+ssp1 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1.csv", DataFrame)
+mig0_ssp2 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP2.csv", DataFrame)
+ssp2 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2.csv", DataFrame)
+mig0_ssp3 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP3.csv", DataFrame)
+ssp3 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3.csv", DataFrame)
+mig0_ssp4 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP4.csv", DataFrame)
+ssp4 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4.csv", DataFrame)
+mig0_ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/mig0_SSP5.csv", DataFrame)
+ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5.csv", DataFrame)
 
 select!(mig0_ssp1, Not(:Column1))
 select!(ssp1, Not(:Column1))
@@ -76,11 +76,11 @@ sspall[!,:diffmig] = sspall[!,:pop_mig] .- sspall[!,:pop_nomig]
 # Source:  K.C., S., Lutz, W. , Potančoková, M. , Abel, G. , Barakat, B., Eder, J., Goujon, A. , Jurasszovich, S., et al. (2020). 
 # Global population and human capital projections for Shared Socioeconomic Pathways – 2015 to 2100, Revision-2018. 
 # https://pure.iiasa.ac.at/id/eprint/17550/
-ssp1_update = CSV.read("../../Samir_data/SSP1_2018update.csv", DataFrame)
-ssp2_update = CSV.read("../../Samir_data/SSP2_2018update.csv", DataFrame)
-ssp3_update = CSV.read("../../Samir_data/SSP3_2018update.csv", DataFrame)
-ssp4_update = CSV.read("../../Samir_data/SSP4_2018update.csv", DataFrame)
-ssp5_update = CSV.read("../../Samir_data/SSP5_2018update.csv", DataFrame)
+ssp1_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1_2018update.csv", DataFrame)
+ssp2_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2_2018update.csv", DataFrame)
+ssp3_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3_2018update.csv", DataFrame)
+ssp4_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4_2018update.csv", DataFrame)
+ssp5_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5_2018update.csv", DataFrame)
 
 ssp1_update.scen = repeat(["SSP1"], size(ssp1_update,1))
 ssp2_update.scen = repeat(["SSP2"], size(ssp2_update,1))
@@ -97,6 +97,7 @@ filter!(
 )
 
 sspall[!,:region] = map(x -> parse(Int, SubString(x, 3)), sspall[!,:region])
+
 sspall = leftjoin(
     sspall,
     rename(
@@ -112,6 +113,22 @@ sspall.pop_nomig_update = sspall.pop_mig_update .* sspall.pop_nomig ./ sspall.po
 # We assume that for each country and SSP scenario, the ratios inmigsum/pop_mig and outmigsum/pop_mig remain the same for the update
 sspall.inmigsum_update = sspall.inmigsum .* sspall.pop_mig_update ./ sspall.pop_mig
 sspall.outmigsum_update = sspall.outmigsum .* sspall.pop_mig_update ./ sspall.pop_mig
+
+# We then rescale inmigsum_update to make sure that for each SSP scenario and time period, the sum over countries of inmigsum_update = the sum over countries of outmigsum_update
+sspall = innerjoin(
+    sspall,
+    combine(
+        groupby(
+            sspall,
+            [:scen, :period]
+        ),
+        :inmigsum_update => sum, :outmigsum_update => sum
+    ),
+    on = [:scen, :period]
+)
+sspall.inmigsum_update = sspall.inmigsum_update .* sspall.outmigsum_update_sum ./ sspall.inmigsum_update_sum
+replace!(sspall.inmigsum_update, NaN => 0.0)
+
 sspall.mig_original_update = sspall.inmigsum_update .- sspall.outmigsum_update
 
 # Create variable for differences in population projections between mig and nomig
@@ -136,9 +153,7 @@ gdps_oecd[!,:year] = map( x -> parse(Int, String(x)), gdps_oecd[!,:year])
 
 # Convert into iso3c country codes
 iso3c_isonum = CSV.read("../data/iso3c_isonum.csv", DataFrame)
-rename!(iso3c_isonum, :iso3c => :country, :isonum => :region)
-
-sspall = leftjoin(sspall, iso3c_isonum, on = :region)
+sspall = leftjoin(sspall, rename(iso3c_isonum, :iso3c => :country, :isonum => :region), on = :region)
 
 # Micronesia (Federated states of) ISO numerical code is not 954, but 583. Its ISO 3 code is FSM
 [if sspall[i,:region] == 583 ; sspall[i,:country] = "FSM" end for i in 1:length(sspall[!,1])]
@@ -152,8 +167,7 @@ for i in channelsind
 end
 deleteat!(sspall, channelsind)
 
-rename!(gdps_oecd, :year => :period, :Region => :country, :Scenario => :scen)
-sspall = innerjoin(sspall, gdps_oecd, on = [:period, :country, :scen])         
+sspall = innerjoin(sspall, rename(gdps_oecd, :year => :period, :Region => :country, :Scenario => :scen), on = [:period, :country, :scen])         
 rename!(sspall, :gdp => :gdp_mig)
 
 
@@ -267,7 +281,7 @@ migflow[!,:move_inmigbase] = migflow[!,:move_in_frac] .* migflow[!,:inmig_dest] 
 # No migrants numbers for the updated SSPs; we assume that migrants age distributions remain the same for the update
 agegroup = combine(groupby(ssp, [:age, :region, :period, :scen]), d -> (inmig = sum(d.inmig), pop = sum(d.pop)))
 
-iso3c_isonum = CSV.File("../data/iso3c_isonum.csv") |> DataFrame
+iso3c_isonum = CSV.File(joinpath(@__DIR__,"../data/iso3c_isonum.csv")) |> DataFrame
 rename!(iso3c_isonum, :iso3c => :country, :isonum => :region)
 agegroup[!,:region] = map(x -> parse(Int, SubString(x, 3)), agegroup[!,:region])
 agegroup = leftjoin(agegroup, iso3c_isonum, on = :region)
@@ -781,5 +795,5 @@ end
 
 ####################################### Write output files with results ############################################################################
 CSV.write(joinpath(@__DIR__, "../results/sspall_6_update.csv"), sspall)
-CSV.write(joinpath(@__DIR__, "../../results_large/migflow_6_update.csv"), migflow)
-CSV.write(joinpath(@__DIR__, "../../results_large/remittances_6_update.csv"), remittances)
+CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/migflow_6_update.csv", migflow)
+CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/remittances_6_update.csv", remittances)
