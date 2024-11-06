@@ -56,31 +56,27 @@ for name in [:inmig, :outmig]
     mig0[!,name] = map(x -> parse(Float64, x), mig0[!,name])
 end
 
-# Create net migration variable
-ssp[!,:mig] = ssp[!,:inmig] .- ssp[!,:outmig]
-
 # Sum projections for all sexes and education levels: population + net migration per country and time period
-ssp_cy = combine(groupby(ssp, [:region, :period, :scen]), d -> (popsum = sum(d.pop), inmigsum = sum(d.inmig), outmigsum = sum(d.outmig), migsum = sum(d.mig)))
+ssp_cy = combine(groupby(ssp, [:region, :period, :scen]), d -> (popsum = sum(d.pop), inmigsum = sum(d.inmig), outmigsum = sum(d.outmig)))
 mig0_cy = combine(groupby(mig0, [:region, :period, :scen]), d -> sum(d.pop))
 rename!(mig0_cy, :x1 => :popsum)
 
 # Join population datasets
 sspall = innerjoin(ssp_cy, mig0_cy, on = [:region, :period, :scen], makeunique = true)
-rename!(sspall, :popsum => :pop_mig, :migsum => :mig_original, :popsum_1 => :pop_nomig)
+rename!(sspall, :popsum => :pop_mig, :popsum_1 => :pop_nomig)
 
 # Create variable for differences in population projections between mig and nomig
 sspall[!,:diffmig] = sspall[!,:pop_mig] .- sspall[!,:pop_nomig]   
 
 
 ####################### Update SSP population scenarios #################################################
-# Source:  K.C., S., Lutz, W. , Potančoková, M. , Abel, G. , Barakat, B., Eder, J., Goujon, A. , Jurasszovich, S., et al. (2020). 
-# Global population and human capital projections for Shared Socioeconomic Pathways – 2015 to 2100, Revision-2018. 
-# https://pure.iiasa.ac.at/id/eprint/17550/
-ssp1_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1_2018update.csv", DataFrame)
-ssp2_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2_2018update.csv", DataFrame)
-ssp3_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3_2018update.csv", DataFrame)
-ssp4_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4_2018update.csv", DataFrame)
-ssp5_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5_2018update.csv", DataFrame)
+# Source:  Wittgenstein Center (WIC) Population and Human Capital Projections, version v.1.3 (February 2024). 
+# https://zenodo.org/records/10618931
+ssp1_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1_V13_2024update.csv", DataFrame)
+ssp2_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2_V13_2024update.csv", DataFrame)
+ssp3_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3_V13_2024update.csv", DataFrame)
+ssp4_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4_V13_2024update.csv", DataFrame)
+ssp5_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5_V13_2024update.csv", DataFrame)
 
 ssp1_update.scen = repeat(["SSP1"], size(ssp1_update,1))
 ssp2_update.scen = repeat(["SSP2"], size(ssp2_update,1))
@@ -90,19 +86,27 @@ ssp5_update.scen = repeat(["SSP5"], size(ssp5_update,1))
 
 ssp_update = vcat(ssp1_update, ssp2_update, ssp3_update, ssp4_update, ssp5_update)
 
-# Keep only population numbers for all age groups together (ageno_0), both sexes together (sexno = 0), and all education together (eduno = 0), and distinct countries (isono < 900)
+# Keep only population numbers for distinct countries (isono < 900)
+ssp_update[!,:region] = map(x -> parse(Int, SubString(x, 4)), ssp_update[!,:region])
 filter!(
-    row -> (row.sexno == 0 && row.eduno == 0 && row.isono < 900),
+    row -> (row.region < 900),
     ssp_update
 )
 
+# Create net migration variable
+ssp_update[!,:mig] = ssp_update[!,:emi] .- ssp_update[!,:imm]
+
+# Sum projections for all sexes, ages, and education levels: population + net migration per country and time period
+ssp_update_cy = combine(groupby(ssp_update, [:region, :Time, :scen]), d -> (pop_mig_update = sum(d.pop), inmigsum_update = sum(d.emi), outmigsum_update = sum(d.imm), migsum_update = sum(d.mig)))
+
+# Join datasets
 sspall[!,:region] = map(x -> parse(Int, SubString(x, 3)), sspall[!,:region])
 
 sspall = leftjoin(
     sspall,
     rename(
-        ssp_update[!,[:year,:isono,:ageno_0,:scen]],
-        :year => :period, :isono => :region, :ageno_0 => :pop_mig_update
+        ssp_update_cy,
+        :Time => :period
     ),
     on = [:scen, :period, :region]
 )
@@ -110,33 +114,15 @@ sspall = leftjoin(
 # We assume that for each country and SSP scenario, the ratio of pop_mig/pop_nomig remains the same for the update 
 sspall.pop_nomig_update = sspall.pop_mig_update .* sspall.pop_nomig ./ sspall.pop_mig
 
-# We assume that for each country and SSP scenario, the ratios inmigsum/pop_mig and outmigsum/pop_mig remain the same for the update
-sspall.inmigsum_update = sspall.inmigsum .* sspall.pop_mig_update ./ sspall.pop_mig
-sspall.outmigsum_update = sspall.outmigsum .* sspall.pop_mig_update ./ sspall.pop_mig
-
-# We then rescale inmigsum_update to make sure that for each SSP scenario and time period, the sum over countries of inmigsum_update = the sum over countries of outmigsum_update
-sspall = innerjoin(
-    sspall,
-    combine(
-        groupby(
-            sspall,
-            [:scen, :period]
-        ),
-        :inmigsum_update => sum, :outmigsum_update => sum
-    ),
-    on = [:scen, :period]
-)
-sspall.inmigsum_update = sspall.inmigsum_update .* sspall.outmigsum_update_sum ./ sspall.inmigsum_update_sum
-replace!(sspall.inmigsum_update, NaN => 0.0)
-
-sspall.mig_original_update = sspall.inmigsum_update .- sspall.outmigsum_update
-
 # Create variable for differences in population projections between mig and nomig
 sspall[!,:diffmig_update] = sspall[!,:pop_mig_update] .- sspall[!,:pop_nomig_update]   
 
 # Keep only updated versions and rename them 
-select!(sspall, [:region,:period,:scen,:pop_mig_update,:inmigsum_update,:outmigsum_update,:mig_original_update,:pop_nomig_update,:diffmig_update])
-rename!(sspall, :pop_mig_update => :pop_mig, :inmigsum_update => :inmigsum, :outmigsum_update => :outmigsum, :mig_original_update => :mig_original, :pop_nomig_update => :pop_nomig, :diffmig_update => :diffmig)
+select!(sspall, [:region,:period,:scen,:pop_mig_update,:inmigsum_update,:outmigsum_update,:pop_nomig_update,:diffmig_update])
+rename!(sspall, :pop_mig_update => :pop_mig, :inmigsum_update => :inmigsum, :outmigsum_update => :outmigsum, :pop_nomig_update => :pop_nomig, :diffmig_update => :diffmig)
+
+# Remove missing values in the updated version: year 2015, and the Channel Islands
+dropmissing!(sspall)
 
 
 #################### Prepare GDP data ################################
@@ -152,20 +138,11 @@ rename!(gdps_oecd, :variable => :year, :value => :gdp)
 gdps_oecd[!,:year] = map( x -> parse(Int, String(x)), gdps_oecd[!,:year])
 
 # Convert into iso3c country codes
-iso3c_isonum = CSV.read("../data/iso3c_isonum.csv", DataFrame)
+iso3c_isonum = CSV.read(joinpath(@__DIR__,"../data/iso3c_isonum.csv"), DataFrame)
 sspall = leftjoin(sspall, rename(iso3c_isonum, :iso3c => :country, :isonum => :region), on = :region)
 
 # Micronesia (Federated states of) ISO numerical code is not 954, but 583. Its ISO 3 code is FSM
 [if sspall[i,:region] == 583 ; sspall[i,:country] = "FSM" end for i in 1:length(sspall[!,1])]
-
-# The Channels Islands do not have a proper ISO code, instead Jersey (832, JEY) and Guernsey (831, GGY) do. 
-# Based on census data for 2011, we attribute 60% of the Channels population to Jersey and the rest to Guernsey.
-channelsind = findall(sspall[!,:region] .== 830)
-for i in channelsind
-    push!(sspall, [831, sspall[i,:period], sspall[i,:scen], sspall[i,:pop_mig]*0.4, sspall[i,:inmigsum]*0.4, sspall[i,:outmigsum]*0.4, sspall[i,:mig_original]*0.4, sspall[i,:pop_nomig]*0.4, sspall[i,:diffmig]*0.4, "GGY"])
-    push!(sspall, [832, sspall[i,:period], sspall[i,:scen], sspall[i,:pop_mig]*0.6, sspall[i,:inmigsum]*0.6, sspall[i,:outmigsum]*0.6, sspall[i,:mig_original]*0.6, sspall[i,:pop_nomig]*0.6, sspall[i,:diffmig]*0.6, "JEY"])
-end
-deleteat!(sspall, channelsind)
 
 sspall = innerjoin(sspall, rename(gdps_oecd, :year => :period, :Region => :country, :Scenario => :scen), on = [:period, :country, :scen])         
 rename!(sspall, :gdp => :gdp_mig)
@@ -183,10 +160,10 @@ migflow = DataFrame(
 )
 rename!(migflow, :origin => :country)
 migflow = innerjoin(migflow, sspall, on = [:country, :period, :scen])
-select!(migflow, Not([:mig_original, :region, :pop_nomig, :inmigsum, :diffmig]))
+select!(migflow, Not([:region, :pop_nomig, :inmigsum, :diffmig]))
 rename!(migflow, :country => :origin, :pop_mig => :pop_orig, :outmigsum => :outmig_orig, :gdp_mig => :gdp_orig, :destination => :country)
 migflow = innerjoin(migflow, sspall, on = [:country, :period, :scen])
-select!(migflow, Not([:mig_original, :region, :pop_nomig, :outmigsum, :diffmig]))
+select!(migflow, Not([:region, :pop_nomig, :outmigsum, :diffmig]))
 rename!(migflow, :country => :destination, :pop_mig => :pop_dest, :inmigsum => :inmig_dest, :gdp_mig => :gdp_dest)
 
 distance = CSV.File(joinpath(@__DIR__, "../data/distance_unpop/distances.csv")) |> DataFrame
@@ -341,7 +318,7 @@ migflow = innerjoin(migflow, lifeexp, on = [:scen, :destination, :period])
 
 
 ######################## Adding a stock variable indicating how many immigrants from a region are in another region ##############################
-# Computing the part of the migrants stock that comes from people who migrate during the projections, i.e. starting 2015
+# Computing the part of the migrants stock that comes from people who migrate during the projections, i.e. starting 2020
 rename!(agegroup, :country => :destination)
 migflow_all = innerjoin(
     migflow[:,[:scen, :origin, :destination, :period, :inmig_dest, :move_in_frac, :move_inmigbase, :lifeexp]], 
@@ -372,25 +349,25 @@ for p in eachindex(periods)
     for i in 0:(l_or*l_dest*l_ssp-1)
         for j in (p-1)*l_age+1:l_age*l_period
             ind = i * l_period * l_age + j
-            value = (migflow_all[!,:duration_prep][ind] - periods[p] < 0) ? migflow_all[!,:stock0][i * l_period * l_age + (p-1) * l_age + (rem(j, l_age) == 0 ? l_age : rem(j, l_age))] : 0.0
-            migflow_all[!,Symbol(string("stock",periods[p]))][ind] = value
+            value = (migflow_all[ind,:duration_prep] - periods[p] < 0) ? migflow_all[i * l_period * l_age + (p-1) * l_age + (rem(j, l_age) == 0 ? l_age : rem(j, l_age)),:stock0] : 0.0
+            migflow_all[ind,Symbol(string("stock",periods[p]))] = value
         end
     end
 end
 
 # Third, add all periods' migrants stocks
-migflow_all[!,:stock_dyn] = migflow_all[!,:stock2015] .+ migflow_all[!,:stock2020] .+ migflow_all[!,:stock2025] .+ migflow_all[!,:stock2030] .+ 
+migflow_all[!,:stock_dyn] = migflow_all[!,:stock2020] .+ migflow_all[!,:stock2025] .+ migflow_all[!,:stock2030] .+ 
     migflow_all[!,:stock2035] .+ migflow_all[!,:stock2040] .+ migflow_all[!,:stock2045] .+ migflow_all[!,:stock2050] .+ 
     migflow_all[!,:stock2055] .+ migflow_all[!,:stock2060] .+ migflow_all[!,:stock2065] .+ migflow_all[!,:stock2070] .+ 
     migflow_all[!,:stock2075] .+ migflow_all[!,:stock2080] .+ migflow_all[!,:stock2085] .+ migflow_all[!,:stock2090] .+ migflow_all[!,:stock2095]
 # Making room in migflow_all
-select!(migflow_all, Not([:stock2015, :stock2020, :stock2025, :stock2030, :stock2035, :stock2040, :stock2045, :stock2050, :stock2055, :stock2060, :stock2065, :stock2070, :stock2075, :stock2080, :stock2085, :stock2090, :stock2095]))
+select!(migflow_all, Not([:stock2020, :stock2025, :stock2030, :stock2035, :stock2040, :stock2045, :stock2050, :stock2055, :stock2060, :stock2065, :stock2070, :stock2075, :stock2080, :stock2085, :stock2090, :stock2095]))
 
 # Computing the initial stock of migrants, and how it declines over time
 # We use bilateral migration stocks from 2017 from the World Bank
 # In order to get its age distribution, we assume that it is the average of two age distributions in the destination country: 
-# the one of migrants at time of migration in the period 2015-2020 (computed from the SSP as "share")
-# and the one of the overall destination population in the period 2015-2020
+# the one of migrants at time of migration in the period 2020-2025 (computed from the SSP as "share")
+# and the one of the overall destination population in the period 2020-2025
 
 # Reading bilateral migrant stocks from 2017
 migstock_matrix = XLSX.readdata(joinpath(@__DIR__, "../data/rem_wb/WB_Bilateral_Estimates_Migrant_Stocks_2017.xlsx"), "Bilateral_Migration_2017!A2:HJ219")
@@ -419,7 +396,7 @@ select!(ccode, Not([Symbol("Series Code"), Symbol("Series Name"), Symbol("2017 [
 rename!(ccode, Symbol("Country Name") => :country, Symbol("Country Code") => :country_code)
 rename!(ccode, :country => :destination)
 indnkorea = findfirst(x -> x == "Korea, Dem. People’s Rep.", ccode[!,:destination])
-ccode[!,:destination][indnkorea] = "Korea, Dem. Rep."
+ccode[indnkorea,:destination] = "Korea, Dem. Rep."
 migstock = innerjoin(migstock, ccode, on = :destination)
 rename!(migstock, :country_code => :dest_code)
 rename!(ccode, :destination => :origin)
@@ -430,7 +407,7 @@ select!(migstock, Not([:origin, :destination]))
 # Getting age distributions
 rename!(agegroup, :destination => :country)
 agedist = @from i in agegroup begin
-    @where i.period == 2015
+    @where i.period == 2020
     @select {i.scen, i.country, i.age, i.pop, migshare = i.share}
     @collect DataFrame
 end
@@ -446,7 +423,7 @@ rename!(migstock, :dest_code => :destination, :orig_code => :origin)
 rename!(agedist, :country => :destination)
 migstock = innerjoin(migstock, agedist, on = :destination)
 migstock[!,:stock_by_age] = migstock[!,:migrantstock] .* migstock[!,:meanshare]
-migstock[!,:period] = repeat([2015], size(migstock,1))
+migstock[!,:period] = repeat([2020], size(migstock,1))
 
 # Making the initial migrant stock decrease over time
 stock_by_age = migstock[:,[:scen, :origin, :destination, :age, :stock_by_age, :period]]
@@ -464,11 +441,11 @@ delete!(stock_by_age, indrem)
 countries_missing = setdiff(unique(migflow_all[!,:origin]),unique(migstock[!,:origin]))     # SWZ, TWN
 co_un = vcat(unique(stock_by_age[!,:origin]), ["SWZ", "TWN"])
 sort!(co_un)
-sba_swz_o = DataFrame(scen = repeat(ssps, inner = l_age*l_or), origin = repeat(["SWZ"], l_ssp*l_age*l_or), destination = repeat(co_un, outer = l_ssp, inner = l_age), age = repeat(unique(migflow_all[!,:age]), outer = l_ssp*l_or), stock_by_age = repeat([0], l_ssp*l_age*l_or), period = repeat(["2015"], l_ssp*l_age*l_or))
+sba_swz_o = DataFrame(scen = repeat(ssps, inner = l_age*l_or), origin = repeat(["SWZ"], l_ssp*l_age*l_or), destination = repeat(co_un, outer = l_ssp, inner = l_age), age = repeat(unique(migflow_all[!,:age]), outer = l_ssp*l_or), stock_by_age = repeat([0], l_ssp*l_age*l_or), period = repeat(["2020"], l_ssp*l_age*l_or))
 stock_by_age = vcat(stock_by_age, sba_swz_o)
-sba_twn_o = DataFrame(scen = repeat(ssps, inner = l_age*l_or), origin = repeat(["TWN"], l_ssp*l_age*l_or), destination = repeat(co_un, outer = l_ssp, inner = l_age), age = repeat(unique(migflow_all[!,:age]), outer = l_ssp*l_or), stock_by_age = repeat([0], l_ssp*l_age*l_or), period = repeat(["2015"], l_ssp*l_age*l_or))
+sba_twn_o = DataFrame(scen = repeat(ssps, inner = l_age*l_or), origin = repeat(["TWN"], l_ssp*l_age*l_or), destination = repeat(co_un, outer = l_ssp, inner = l_age), age = repeat(unique(migflow_all[!,:age]), outer = l_ssp*l_or), stock_by_age = repeat([0], l_ssp*l_age*l_or), period = repeat(["2020"], l_ssp*l_age*l_or))
 stock_by_age = vcat(stock_by_age, sba_twn_o)
-sba_swz_d = DataFrame(scen = repeat(ssps, inner = l_age*l_or), origin = repeat(co_un, outer = l_ssp, inner = l_age), destination = repeat(["SWZ"], l_ssp*l_age*l_or), age = repeat(unique(migflow_all[!,:age]), outer = l_ssp*l_or), stock_by_age = repeat([0], l_ssp*l_age*l_or), period = repeat(["2015"], l_ssp*l_age*l_or))
+sba_swz_d = DataFrame(scen = repeat(ssps, inner = l_age*l_or), origin = repeat(co_un, outer = l_ssp, inner = l_age), destination = repeat(["SWZ"], l_ssp*l_age*l_or), age = repeat(unique(migflow_all[!,:age]), outer = l_ssp*l_or), stock_by_age = repeat([0], l_ssp*l_age*l_or), period = repeat(["2020"], l_ssp*l_age*l_or))
 ind_u = []
 for i in eachindex(sba_swz_d[:,1])
     if (sba_swz_d[i,:origin] == "SWZ" && sba_swz_d[i,:destination] == "SWZ") || (sba_swz_d[i,:origin] == "TWN" && sba_swz_d[i,:destination] == "SWZ")
@@ -477,7 +454,7 @@ for i in eachindex(sba_swz_d[:,1])
 end
 delete!(sba_swz_d, ind_u)       # delete doubled rows
 stock_by_age = vcat(stock_by_age, sba_swz_d)
-sba_twn_d = DataFrame(scen = repeat(ssps, inner = l_age*l_or), origin = repeat(co_un, outer = l_ssp, inner = l_age), destination = repeat(["TWN"], l_ssp*l_age*l_or), age = repeat(unique(migflow_all[!,:age]), outer = l_ssp*l_or), stock_by_age = repeat([0], l_ssp*l_age*l_or), period = repeat(["2015"], l_ssp*l_age*l_or))
+sba_twn_d = DataFrame(scen = repeat(ssps, inner = l_age*l_or), origin = repeat(co_un, outer = l_ssp, inner = l_age), destination = repeat(["TWN"], l_ssp*l_age*l_or), age = repeat(unique(migflow_all[!,:age]), outer = l_ssp*l_or), stock_by_age = repeat([0], l_ssp*l_age*l_or), period = repeat(["2020"], l_ssp*l_age*l_or))
 ind_u = []
 for i in eachindex(sba_twn_d[:,1])
     if (sba_twn_d[i,:origin] == "SWZ" && sba_twn_d[i,:destination] == "TWN") || (sba_twn_d[i,:origin] == "TWN" && sba_twn_d[i,:destination] == "TWN")
@@ -495,7 +472,7 @@ sort!(migflow_all, [:scen, :origin, :destination, :period, :age])       # IMPORT
 # Pursue calculation of stock_by_age over time 
 for i in 0:l_or*l_dest*l_ssp-1
     for j in (1+l_age):l_period*l_age
-        migflow_all[!,:stock_by_age][i*l_period*l_age + j] = (migflow_all[!,:duration_prep][i*l_period*l_age + j] - 2015 < 0) ? migflow_all[!,:stock_by_age][i*l_period*l_age + (rem(j,l_age) == 0 ? l_age : rem(j,l_age))] : 0
+        migflow_all[i*l_period*l_age + j,:stock_by_age] = (migflow_all[i*l_period*l_age + j,:duration_prep] - 2020 < 0) ? migflow_all[i*l_period*l_age + (rem(j,l_age) == 0 ? l_age : rem(j,l_age)),:stock_by_age] : 0
     end
 end
 
@@ -547,7 +524,7 @@ sspall = leftjoin(sspall, remittances_country[:,[:scen, :country, :period, :rem]
 # GDP without migration rescaled through changes in population size and remittances
 sspall[!,:gdp_nomig] = (sspall[!,:gdp_mig] .- sspall[!,:rem]) .* sspall[!,:pop_nomig] ./ sspall[!,:pop_mig]
 
-# For 2015, assign same value of GDP to mig and nomig
+# For 2020, assign same value of GDP to mig and nomig
 for i in eachindex(sspall[:,1])
     if ismissing(sspall[i,:gdp_nomig])
         sspall[i,:gdp_nomig] = sspall[i,:gdp_mig]
@@ -559,14 +536,14 @@ sspall[!,:ypc_nomig] = sspall[!,:gdp_nomig] .* 10^9 ./ (sspall[!,:pop_nomig] .* 
 
 
 ####################################### Correct results for specific countries ###############################################
-# For 4 countries, |rem| > GDP at some periods: Liberia, Serbia, Tajikistan, Netherlands
+# For 5 countries, |rem| > GDP at some periods: Jordan, Serbia, Tajikistan, Sri Lanka, Netherlands
 sspall[!,:remgdpshare] = sspall[!,:rem] ./ sspall[!,:gdp_mig]
 # We force |rem| < GDP by keeping constant |rem|/GDP ratio once issues arise
 sort!(sspall, [:scen, :country, :period])
 for i in eachindex(sspall[:,1])
     if !ismissing(sspall[i,:remgdpshare]) && (sspall[i,:remgdpshare] > 1 || sspall[i,:remgdpshare] < -1)
         ind = findlast(x -> (!ismissing(x) && x > -1 && x < 1), sspall[1:i,:remgdpshare])
-        sspall[i,:gdp_nomig] = sspall[i,:gdp_mig] * (1 - sspall[!,:remgdpshare][ind]) * sspall[i,:pop_nomig] / (sspall[i,:pop_mig] + sspall[i,:diffmig])
+        sspall[i,:gdp_nomig] = sspall[i,:gdp_mig] * (1 - sspall[ind,:remgdpshare]) * sspall[i,:pop_nomig] / (sspall[i,:pop_mig] + sspall[i,:diffmig])
     end
 end
 

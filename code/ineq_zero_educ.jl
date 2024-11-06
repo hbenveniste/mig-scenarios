@@ -77,11 +77,11 @@ sspedu_6 = innerjoin(ssp_cye, mig0_cye, on = [:region, :period, :scen, :edu])
 # Source:  K.C., S., Lutz, W. , Potančoková, M. , Abel, G. , Barakat, B., Eder, J., Goujon, A. , Jurasszovich, S., et al. (2020). 
 # Global population and human capital projections for Shared Socioeconomic Pathways – 2015 to 2100, Revision-2018. 
 # https://pure.iiasa.ac.at/id/eprint/17550/
-ssp1_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1_2018update.csv", DataFrame)
-ssp2_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2_2018update.csv", DataFrame)
-ssp3_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3_2018update.csv", DataFrame)
-ssp4_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4_2018update.csv", DataFrame)
-ssp5_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5_2018update.csv", DataFrame)
+ssp1_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1_V13_2024update.csv", DataFrame)
+ssp2_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2_V13_2024update.csv", DataFrame)
+ssp3_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3_V13_2024update.csv", DataFrame)
+ssp4_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4_V13_2024update.csv", DataFrame)
+ssp5_update = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5_V13_2024update.csv", DataFrame)
 
 ssp1_update.scen = repeat(["SSP1"], size(ssp1_update,1))
 ssp2_update.scen = repeat(["SSP2"], size(ssp2_update,1))
@@ -91,18 +91,17 @@ ssp5_update.scen = repeat(["SSP5"], size(ssp5_update,1))
 
 ssp_update = vcat(ssp1_update, ssp2_update, ssp3_update, ssp4_update, ssp5_update)
 
-# Keep only population numbers for all age groups together (ageno_0), both sexes together (sexno = 0) and disaggregated education levels (eduno != 0), and distinct countries (isono < 900)
+# Keep only population numbers for distinct countries (isono < 900)
+ssp_update[!,:region] = map(x -> parse(Int, SubString(x, 4)), ssp_update[!,:region])
 filter!(
-    row -> (row.sexno == 0 && row.eduno !=0 && row.isono < 900),
+    row -> (row.region < 900),
     ssp_update
 )
-select!(ssp_update, [:year,:isono,:eduno,:scen,:ageno_0])
+select!(ssp_update, [:region,:Time,:scen,:sex,:edu,:agest,:pop])
 
-# Full update: use population sizes and education distribution of updated scenarios
+# Use population sizes and education distribution of updated scenarios
 # Convert 10 education levels (Under 15, No Education, Incomplete Primary, Primary, Lower Secondary, Upper Secondary, Post Secondary, Short Post Secondary, Bachelor, Master and higher)
 # to 6 education levels (no education, some primary, primary completed, lower secondary completed, upper secondary completed, post secondary completed)
-ssp_update[!,:edu_6] = [(ssp_update[i,:eduno] == 1 || ssp_update[i,:eduno] == 2) ? "e1" : (ssp_update[i,:eduno] == 3 ? "e2" : (ssp_update[i,:eduno] == 4 ? "e3" : (ssp_update[i,:eduno] == 5 ? "e4" : (ssp_update[i,:eduno] == 6 ? "e5" : "e6")))) for i in eachindex(ssp_update[:,1])]
-
 sspedu_6[!,:region] = map(x -> parse(Int, SubString(x, 3)), sspedu_6[!,:region])
 
 sspedu_6 = leftjoin(
@@ -111,11 +110,11 @@ sspedu_6 = leftjoin(
         combine(
             groupby(
                 ssp_update, 
-                [:year,:isono,:scen,:edu_6]
+                [:region,:Time,:scen,:edu]
             ), 
-            :ageno_0 => sum
+            :pop => sum
         ),
-        :year => :period, :isono => :region, :edu_6 => :edu, :ageno_0_sum => :pop_mig_update
+        :Time => :period, :pop_sum => :pop_mig_update
     ),
     on = [:scen, :period, :region, :edu]
 )
@@ -123,41 +122,8 @@ sspedu_6 = leftjoin(
 # We assume that for each country, education level, and SSP scenario, the ratio of pop_mig/pop_nomig remains the same for the update 
 sspedu_6.pop_nomig_update = sspedu_6.pop_mig_update .* sspedu_6.pop_nomig ./ sspedu_6.pop_mig
 
-# Partial update: use population sizes of updated scenarios and education distribution of earlier scenarios
-sspedu_6 = innerjoin(
-    sspedu_6,
-    combine(
-        groupby(
-            sspedu_6,
-            [:region,:period,:scen]
-        ),
-        :pop_mig => sum, :pop_nomig => sum 
-    ),
-    on = [:region,:period,:scen]
-)
-sspedu_6.popshare_mig = sspedu_6.pop_mig ./ sspedu_6.pop_mig_sum
-sspedu_6.popshare_nomig = sspedu_6.pop_nomig ./ sspedu_6.pop_nomig_sum
-
-# We assume that for each country and SSP scenario, the ratio of pop_mig_sum/pop_nomig_sum remains the same for the update 
-# and that education distribution remains the same for the update 
-sspedu_6 = leftjoin(
-    sspedu_6,
-    rename(
-        combine(
-            groupby(
-                ssp_update, 
-                [:year,:isono,:scen]
-            ), 
-            :ageno_0 => sum
-        ),
-        :year => :period, :isono => :region, :ageno_0_sum => :pop_mig_sum_update
-    ),
-    on = [:scen, :period, :region]
-)
-
-sspedu_6.pop_nomig_sum_update = sspedu_6.pop_mig_sum_update .* sspedu_6.pop_nomig_sum ./ sspedu_6.pop_mig_sum
-sspedu_6.pop_mig_updatepart = sspedu_6.pop_mig_sum_update .* sspedu_6.popshare_mig
-sspedu_6.pop_nomig_updatepart = sspedu_6.pop_nomig_sum_update .* sspedu_6.popshare_nomig
+# Remove missing values in the updated version: year 2015, and the Channel Islands
+dropmissing!(sspedu_6)
 
 
 #################################### Compute changes in Gini due to migration-related changes in education composition of the population #####################
