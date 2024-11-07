@@ -239,6 +239,10 @@ select!(gini, Not(:educspend_diff))
 # Compute Gini projections without migration
 gini[!,:gini_nomig] = gini[!,:gini] .- gini[!,:dgini_edu] .- gini[!, :dgini_eduspend]
 
+# For 8 countries at the end of the century, this yields unrelatistically low Gini values for zero migration: Afghanistan, Jamaica, Timor Leste, Mali, Sudan, Tonga, Guyana, Western Samoa
+# We enforce Gini >= 0.1
+gini.gini_nomig = map(x -> max(x, 0.1), gini.gini_nomig)
+
 # For 2010 (before migration starts), assign same values of Gini for mig and nomig
 for i in eachindex(gini[:,1])
     if gini[i,:period] == 2010
