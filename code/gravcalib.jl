@@ -1,4 +1,4 @@
-using CSV, DataFrames, DelimitedFiles, FileIO, FilePaths
+using CSV, DataFrames, DelimitedFiles, FileIO, FilePaths, XLSX
 using FixedEffectModels, RegressionTables
 using GLM
 using Query
@@ -350,6 +350,7 @@ fe_ar_odyfe = hcat(gravity_ar[:,[:year,:orig,:dest]], fe(rr2))
 fe_ratio_ar_yfe = hcat(gravity_ar[:,[:year,:orig,:dest]], fe(rr3))
 fe_ratio_ar_odyfe = hcat(gravity_ar[:,[:year,:orig,:dest]], fe(rr4))
 fe_abel_yfe = hcat(gravity[:,[:year,:orig,:dest]], fe(rr5))
+
 
 CSV.write(joinpath(@__DIR__,"../data/gravity_calib/beta.csv"), beta)
 CSV.write(joinpath(@__DIR__,"../data/gravity_calib/beta_ratio.csv"), beta_ratio)

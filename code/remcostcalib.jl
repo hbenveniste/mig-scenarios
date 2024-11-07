@@ -15,8 +15,10 @@ indnot2017 = findall(rpw[!,:period] .!= 2017)
 delete!(rpw, indnot2017)
 
 # Drop rows for which costs are negative
-rpw[!,:meancost] = [(typeof(rpw[i,:cc1]) == Float64 && rpw[i,:cc1]>=0) ? ((typeof(rpw[i,:cc2]) == Float64 && rpw[i,:cc2]>=0) ? mean([rpw[i,:cc1], rpw[i,:cc2]]) : max(0,rpw[i,:cc1])) : max(0,rpw[i,:cc2]) for i in 1:size(rpw, 1)]
+rpw[!,:meancost] = [((typeof(rpw[i,:cc1]) == Float64 || typeof(rpw[i,:cc1]) == Int64) && rpw[i,:cc1]>=0) ? ((typeof(rpw[i,:cc2]) == Float64 && rpw[i,:cc2]>=0) ? mean([rpw[i,:cc1], rpw[i,:cc2]]) : max(0,rpw[i,:cc1])) : max(0,rpw[i,:cc2]) for i in eachindex(rpw[:,1])]
 # Average over surveys and firms per corridor
 phi = combine(groupby(rpw, [:origin, :destination]), df -> mean(df[!,:meancost]) ./ 100)      
 rename!(phi, :x1 => :phi)
+
+
 CSV.write("../data/rem_wb/phi.csv", phi)

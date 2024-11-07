@@ -40,7 +40,7 @@ ypc2017 = XLSX.openxlsx(joinpath(@__DIR__, "../data/rem_wb/GDPpercap2017.xlsx"))
 end
 select!(ypc2017, Not([Symbol("Series Code"), Symbol("Series Name")]))
 rename!(ypc2017, Symbol("Country Name") => :country, Symbol("Country Code") => :country_code, Symbol("2017 [YR2017]") => :ypc)
-for i in 1:size(ypc2017, 1) ; if ypc2017[i,:ypc] == ".." ; ypc2017[i,:ypc] = missing end end      # replacing missing values by zeros
+for i in eachindex(ypc2017[:,1]) ; if ypc2017[i,:ypc] == ".." ; ypc2017[i,:ypc] = missing end end      # replacing missing values by zeros
 
 # Joining data
 rename!(remflow, :sending => :destination) ; rename!(remflow, :receiving => :origin)                # remittances sending country = destination country
@@ -54,11 +54,11 @@ ypc2017[!,:destination][indnkorea] = "Korea, Dem. Rep."
 rho = innerjoin(rho, ypc2017, on = :destination)         
 rename!(ypc2017, :destination => :origin, :code_dest => :code_or, :ypc_dest => :ypc_or)
 rho = innerjoin(rho, ypc2017, on = :origin)       
-rho[!,:ypc] = [max(mean([rho[i,:ypc_or],rho[i,:ypc_dest]]), rho[i,:ypc_or]) for i in 1:size(rho,1)]
+rho[!,:ypc] = [max(mean([rho[i,:ypc_or],rho[i,:ypc_dest]]), rho[i,:ypc_or]) for i in eachindex(rho[:,1])]
 
 # Calculating rho using rho * ypc * migstock = remflow
 rho[!,:rho] = rho[!,:remflow] .* 1000000 ./ (rho[!,:migstock] .* rho[!,:ypc])       # Remittances are in million USD 2018
-for i in 1:size(rho, 1)
+for i in eachindex(rho[:,1])
     if ismissing(rho[i,:ypc]) || rho[i,:migstock] == 0.0 || rho[i,:ypc] == 0.0
         rho[i,:rho] = 0.0
     end
@@ -68,4 +68,6 @@ end
 rhofinal = rho[:,[:code_or,:code_dest,:rho]]
 sort!(rhofinal, [:code_or,:code_dest])
 rename!(rhofinal, :code_or => :origin, :code_dest => :destination)
+
+
 CSV.write("../data/rem_wb/rho.csv", rhofinal)
