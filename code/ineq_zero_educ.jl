@@ -168,9 +168,9 @@ select!(gini, Not(:educspend_diff))
 gini[!,:gini_nomig] = gini[!,:gini] .- gini[!,:dgini_edu] .- gini[!, :dgini_eduspend]
 
 
-# For 2010 (before migration starts), assign same values of Gini for mig and nomig
+# For 2010 and 2015 (before migration starts), assign same values of Gini for mig and nomig
 for i in eachindex(gini[:,1])
-    if gini[i,:Time] == 2010
+    if gini[i,:Time] < 2020
         gini[i,:gini_nomig] = gini[i, :gini]
     end
 end
