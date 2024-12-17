@@ -9,17 +9,17 @@ sspall = CSV.File(joinpath(@__DIR__, "../results/sspall_6_update.csv")) |> DataF
 
 ################################################# Compute Gini coefficients between countries with and without migration ############################################
 # Treat separately version with and without migration
-ginibtw_mig = sspall[:,[:scen, :country, :period, :pop_mig, :gdp_mig, :ypc_mig]]
-ginibtw_nomig = sspall[:,[:scen, :country, :period, :pop_nomig, :gdp_nomig, :ypc_nomig]]
+ginibtw_mig = sspall[:,[:scen, :country, :Time, :pop_mig, :gdp_mig, :ypc_mig]]
+ginibtw_nomig = sspall[:,[:scen, :country, :Time, :pop_nomig, :gdp_nomig, :ypc_nomig]]
 
-periods = unique(ginibtw_mig[!,:period]) ; ssps = unique(ginibtw_mig[!,:scen]) ; countries = unique(ginibtw_mig[!,:country])
+periods = unique(ginibtw_mig[!,:Time]) ; ssps = unique(ginibtw_mig[!,:scen]) ; countries = unique(ginibtw_mig[!,:country])
 
 # Order countries per growing ypc 
-sort!(ginibtw_mig, [:scen, :period, :ypc_mig])
-sort!(ginibtw_nomig, [:scen, :period, :ypc_nomig])
+sort!(ginibtw_mig, [:scen, :Time, :ypc_mig])
+sort!(ginibtw_nomig, [:scen, :Time, :ypc_nomig])
 
 # Compute cumulative share of people
-pop_world_mig = rename(combine(groupby(ginibtw_mig, [:scen, :period]), :pop_mig => sum),:pop_mig_sum => :pop_world_mig)
+pop_world_mig = rename(combine(groupby(ginibtw_mig, [:scen, :Time]), :pop_mig => sum),:pop_mig_sum => :pop_world_mig)
 cum_pop=[]
 for i in 0:length(periods)*length(ssps)-1
     cp = []
@@ -31,7 +31,7 @@ for i in 0:length(periods)*length(ssps)-1
 end
 ginibtw_mig[!,:cum_pop] = cum_pop
 
-pop_world_nomig = rename(combine(groupby(ginibtw_nomig, [:scen, :period]), :pop_nomig => sum),:pop_nomig_sum => :pop_world_nomig)
+pop_world_nomig = rename(combine(groupby(ginibtw_nomig, [:scen, :Time]), :pop_nomig => sum),:pop_nomig_sum => :pop_world_nomig)
 cum_pop=[]
 for i in 0:length(periods)*length(ssps)-1
     cp = []
@@ -44,7 +44,7 @@ end
 ginibtw_nomig[!,:cum_pop] = cum_pop
 
 # Compute cumulative share of income
-gdp_world_mig = rename(combine(groupby(ginibtw_mig, [:scen, :period]), :gdp_mig => sum), :gdp_mig_sum => :gdp_world_mig)
+gdp_world_mig = rename(combine(groupby(ginibtw_mig, [:scen, :Time]), :gdp_mig => sum), :gdp_mig_sum => :gdp_world_mig)
 cum_gdp=[]
 for i in 0:length(periods)*length(ssps)-1
     cp = []
@@ -56,7 +56,7 @@ for i in 0:length(periods)*length(ssps)-1
 end
 ginibtw_mig[!,:cum_gdp] = cum_gdp
 
-gdp_world_nomig = rename(combine(groupby(ginibtw_nomig, [:scen, :period]), :gdp_nomig => sum),:gdp_nomig_sum => :gdp_world_nomig)
+gdp_world_nomig = rename(combine(groupby(ginibtw_nomig, [:scen, :Time]), :gdp_nomig => sum),:gdp_nomig_sum => :gdp_world_nomig)
 cum_gdp=[]
 for i in 0:length(periods)*length(ssps)-1
     cp = []
@@ -90,17 +90,17 @@ for i in 0:length(periods)*length(ssps)-1
 end
 
 # Gather calculated between-countries Gini with and without migration
-gini_world = DataFrame(scen = gdp_world_mig[!,:scen], period = gdp_world_mig[!,:period])
+gini_world = DataFrame(scen = gdp_world_mig[!,:scen], Time = gdp_world_mig[!,:Time])
 gini_world[!,:gini_world_mig] = gini_world_mig
 gini_world[!,:gini_world_nomig] = gini_world_nomig
 
 
 ################################################# Plot results for world #####################################
-gini_w = stack(gini_world, [:gini_world_mig, :gini_world_nomig], [:scen, :period])
+gini_w = stack(gini_world, [:gini_world_mig, :gini_world_nomig], [:scen, :Time])
 rename!(gini_w, :variable => :gini_type, :value => :gini)
 gini_w |> @vlplot(
     width=300, height=250,
-    mark={:point, size=60}, x = {"period:o", axis={labelFontSize=16}, title=nothing}, y = {"gini:q", title="Between countries Gini", axis={labelFontSize=16,titleFontSize=16}}, 
+    mark={:point, size=60}, x = {"Time:o", axis={labelFontSize=16}, title=nothing}, y = {"gini:q", title="Between countries Gini", axis={labelFontSize=16,titleFontSize=16}}, 
     color = {"scen:n", scale={scheme=:category10}, legend={titleFontSize=16, symbolSize=40, labelFontSize=16}}, 
     shape = {"gini_type:o", scale={range=["circle","triangle-up"]}, legend={titleFontSize=16, symbolSize=40, labelFontSize=16}}
 ) |> save(joinpath(@__DIR__, "../results/gini_btw/", "gini_world_6_update.png"))
@@ -110,7 +110,7 @@ gini_world[!,:reldif] = gini_world[!,:gini_world_mig] ./ gini_world[!,:gini_worl
 
 gini_world |> @vlplot(
     width=300, height=250,
-    mark = {:point, filled=true, size=80}, x = {"period:o", axis={labelFontSize=16}, title=nothing}, y = {"reldif:q", title="Relative change with migration", axis={labelFontSize=16, titleFontSize=16}}, 
+    mark = {:point, filled=true, size=80}, x = {"Time:o", axis={labelFontSize=16}, title=nothing}, y = {"reldif:q", title="Relative change with migration", axis={labelFontSize=16, titleFontSize=16}}, 
     color = {"scen:n", scale={scheme=:category10}, legend=nothing}
 ) |> save(joinpath(@__DIR__, "../results/gini_btw/", "ginirel_world_6_update.png"))
 
@@ -118,8 +118,8 @@ gini_world |> @vlplot(
 ################################################# Plot Lorenz curves ########################################
 ginibtw_mig[!,:type] = repeat(["mig"], size(ginibtw_mig,1))
 ginibtw_nomig[!,:type] = repeat(["nomig"], size(ginibtw_nomig,1))
-lorenz = vcat(ginibtw_mig[:,[:scen, :country, :period, :cum_gdp, :cum_pop, :type]], ginibtw_nomig[:,[:scen, :country, :period, :cum_gdp, :cum_pop, :type]])
-lorenz[(lorenz[!,:period].==2065),:] |> @vlplot(
+lorenz = vcat(ginibtw_mig[:,[:scen, :country, :Time, :cum_gdp, :cum_pop, :type]], ginibtw_nomig[:,[:scen, :country, :Time, :cum_gdp, :cum_pop, :type]])
+lorenz[(lorenz[!,:Time].==2065),:] |> @vlplot(
     :line, x = {"cum_pop:q", axis={labelFontSize=16}}, y = {"cum_gdp:q", axis={labelFontSize=16}}, 
     title = "World Lorenz curve for 2065", 
     color = {"scen:n", scale={scheme=:category10}, legend={titleFontSize=16, symbolSize=40, labelFontSize=16}}, 
