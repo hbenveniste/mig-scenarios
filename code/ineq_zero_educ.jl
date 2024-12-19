@@ -42,10 +42,23 @@ mig0_ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveni
 mig0_ssp = vcat(mig0_ssp1, mig0_ssp2, mig0_ssp3, mig0_ssp4, mig0_ssp5)
 select!(mig0_ssp, [:region,:Time,:sex,:edu,:agest,:pop,:births,:emi,:imm,:deaths,:scen])
 
-# Sum projections for all sexes and ages: population per country and time period
-ssp_cye = combine(groupby(ssp, [:region, :Time, :scen, :edu]), d -> sum(d.pop))
+# Sum projections for all sexes and ages above 15, as in Rao et al.: population per country and time period
+ssp_cye = combine(
+    groupby(
+        ssp[.&(ssp.agest .>= 15),:], 
+        [:region, :Time, :scen, :edu]
+    ),
+    d -> sum(d.pop)
+)
 rename!(ssp_cye, :x1 => :pop_mig)
-mig0_cye = combine(groupby(mig0_ssp, [:region, :Time, :scen, :edu]), d -> sum(d.pop))
+
+mig0_cye = combine(
+    groupby(
+        mig0_ssp[.&(mig0_ssp.agest .>= 15),:], 
+        [:region, :Time, :scen, :edu]
+    ), 
+    d -> sum(d.pop)
+)
 rename!(mig0_cye, :x1 => :pop_nomig)
 mig0_cye.scen = map(x -> SubString(x, 1:4), mig0_cye.scen)
 
