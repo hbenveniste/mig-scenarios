@@ -1,4 +1,4 @@
-using CSV, DataFrames, DelimitedFiles, FileIO, FilePaths, XLSX
+using CSV, DataFrames, DelimitedFiles, FileIO, FilePaths, XLSX, Statistics
 using FixedEffectModels, RegressionTables
 using GLM
 using Query
