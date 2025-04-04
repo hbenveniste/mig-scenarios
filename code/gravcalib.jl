@@ -302,12 +302,12 @@ regtable(rr1, rr2, rr3, rr4, rr5; regression_statistics=[:nobs, :r2, :r2_within]
 beta = DataFrame(
     regtype = ["reg_ar_yfe","reg_ar_odyfe","reg_abel_yfe"],
     b1 = [0.686,0.746,0.575],       # pop_orig
-    b2 = [0.681,-0.748,0.603],       # pop_dest
+    b2 = [0.681,-0.748,0.602],       # pop_dest
     b4 = [0.428,0.155,0.105],       # ypc_orig
-    b5 = [0.838,-0.004,0.791],       # ypc_dest
+    b5 = [0.837,-0.004,0.791],       # ypc_dest
     b7 = [-1.291,-1.472,-1.038],       # distance
     b8 = [0.155,0.190,0.090],       # remshare
-    b9 = [-8.382,-11.706,-14.203],       # remcost
+    b9 = [-9.418,-12.894,-15.333],       # remcost
     b10 = [1.727,1.606,1.439]     # comofflang
 )
 beta_ratio = DataFrame(
@@ -316,7 +316,7 @@ beta_ratio = DataFrame(
     b6 = [0.145,-0.088],       # ypc_ratio
     b7 = [-1.166,-1.472],       # distance
     b8 = [-0.053,0.190],       # remshare
-    b9 = [-8.860,-11.703],       # remcost
+    b9 = [-10.532,-12.891],       # remcost
     b10 = [1.217,1.607]       # comofflang
 )
 
