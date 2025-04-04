@@ -70,4 +70,4 @@ sort!(rhofinal, [:code_or,:code_dest])
 rename!(rhofinal, :code_or => :origin, :code_dest => :destination)
 
 
-CSV.write("../data/rem_wb/rho.csv", rhofinal)
+CSV.write(joinpath(@__DIR__, "../data/rem_wb/rho.csv"), rhofinal)

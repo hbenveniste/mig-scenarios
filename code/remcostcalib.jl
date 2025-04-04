@@ -21,4 +21,4 @@ phi = combine(groupby(rpw, [:origin, :destination]), df -> mean(df[!,:meancost])
 rename!(phi, :x1 => :phi)
 
 
-CSV.write("../data/rem_wb/phi.csv", phi)
+CSV.write(joinpath(@__DIR__, "../data/rem_wb/phi.csv"), phi)

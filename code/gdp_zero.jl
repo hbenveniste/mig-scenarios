@@ -5,13 +5,13 @@ using Statistics, Query
 
 ################## Prepare population data: original SSP and no-migration version ####################
 # Original version:
-# Source:  Wittgenstein Center (WIC) Population and Human Capital Projections, version v.1.3 (February 2024). 
-# https://zenodo.org/records/10618931
-ssp1 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP1_V13_2024update.csv", DataFrame)
-ssp2 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP2_V13_2024update.csv", DataFrame)
-ssp3 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP3_V13_2024update.csv", DataFrame)
-ssp4 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP4_V13_2024update.csv", DataFrame)
-ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/SSP5_V13_2024update.csv", DataFrame)
+# Source:  Wittgenstein Center (WIC) Population and Human Capital Projections, version v.14 (February 2025). 
+# https://zenodo.org/records/14718294
+ssp1 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP1_V14.csv", DataFrame)
+ssp2 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP2_V14.csv", DataFrame)
+ssp3 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP3_V14.csv", DataFrame)
+ssp4 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP4_V14.csv", DataFrame)
+ssp5 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP5_V14.csv", DataFrame)
 
 ssp1.scen = repeat(["SSP1"], size(ssp1,1))
 ssp2.scen = repeat(["SSP2"], size(ssp2,1))
@@ -25,12 +25,18 @@ ssp = vcat(ssp1, ssp2, ssp3, ssp4, ssp5)
 ssp[!,:mig] = ssp[!,:emi] .- ssp[!,:imm]
 
 # Version for zero migration
-# Provided by Samir KC in December 2024
-mig0_ssp1 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_z21_SSP1_ZeroMig_sxSSP1_fertSSP1_srbSSP1_eduSSP1_emiZero_immZero.csv", DataFrame)
-mig0_ssp2 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_z20_SSP2_ZeroMig_sxSSP2_fertSSP2_srbSSP2_eduSSP2_emiZero_immZero.csv", DataFrame)
-mig0_ssp3 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_z22_SSP3_ZeroMig_sxSSP3_fertSSP3_srbSSP3_eduSSP3_emiZero_immZero.csv", DataFrame)
-mig0_ssp4 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_z23_SSP4_ZeroMig_sxSSP4_fertSSP4_srbSSP4_eduSSP4_emiZero_immZero.csv", DataFrame)
-mig0_ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_z24_SSP5_ZeroMig_sxSSP5_fertSSP5_srbSSP5_eduSSP5_emiZero_immZero.csv", DataFrame)
+# Provided by Samir KC in March 2025
+mig0_ssp1 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x05ssp1_emort_efert_0mig.csv", DataFrame)
+mig0_ssp2 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x01ssp2_emort_efert_0mig.csv", DataFrame)
+mig0_ssp3 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x07ssp3_emort_efert_0mig.csv", DataFrame)
+mig0_ssp4 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x08ssp4_emort_efert_0mig.csv", DataFrame)
+mig0_ssp5 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x06ssp5_emort_efert_0mig.csv", DataFrame)
+
+mig0_ssp1.scen = repeat(["SSP1"], size(mig0_ssp1,1))
+mig0_ssp2.scen = repeat(["SSP2"], size(mig0_ssp2,1))
+mig0_ssp3.scen = repeat(["SSP3"], size(mig0_ssp3,1))
+mig0_ssp4.scen = repeat(["SSP4"], size(mig0_ssp4,1))
+mig0_ssp5.scen = repeat(["SSP5"], size(mig0_ssp5,1))
 
 mig0_ssp = vcat(mig0_ssp1, mig0_ssp2, mig0_ssp3, mig0_ssp4, mig0_ssp5)
 select!(mig0_ssp, [:region,:Time,:sex,:edu,:agest,:pop,:births,:emi,:imm,:deaths,:scen])
@@ -56,7 +62,6 @@ mig0_ssp_cy = combine(
     d -> sum(d.pop)
 )
 rename!(mig0_ssp_cy, :x1 => :pop_nomig)
-mig0_ssp_cy.scen = map(x -> SubString(x, 1:4), mig0_ssp_cy.scen)
 
 # Join population datasets
 sspall = innerjoin(ssp_cy, mig0_ssp_cy, on = [:region, :Time, :scen])
@@ -473,7 +478,7 @@ sspall[!,:ypc_nomig] = sspall[!,:gdp_nomig] .* 10^9 ./ (sspall[!,:pop_nomig] .* 
 
 
 ####################################### Correct results for specific countries ###############################################
-# For 2 countries, |rem| > GDP at some periods: Sri Lanka, Netherlands
+# For 5 countries, |rem| > GDP at some periods: Sri Lanka, Netherlands, Serbia, Jordan, Tajikistan
 sspall[!,:remgdpshare] = sspall[!,:rem] ./ sspall[!,:gdp_mig]
 # We force |rem| < GDP by keeping constant |rem|/GDP ratio once issues arise
 sort!(sspall, [:scen, :country, :Time])
@@ -709,5 +714,5 @@ end
 
 ####################################### Write output files with results ############################################################################
 CSV.write(joinpath(@__DIR__, "../results/sspall_6_update.csv"), sspall)
-CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/migflow_6_update.csv", migflow)
-CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/remittances_6_update.csv", remittances)
+CSV.write("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/migflow_6_update.csv", migflow)
+CSV.write("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/remittances_6_update.csv", remittances)

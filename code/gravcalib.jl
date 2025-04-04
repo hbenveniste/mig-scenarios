@@ -7,7 +7,7 @@ using Distances
 
 ########################## Prepare migration flows data ########################################
 # Using Abel (2018). Note: too large to be stored on Github; available from https://guyabel.com/publication/global-migration-estimates-by-gender/ 
-migflow_allstockdemo = CSV.File("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Abel_data/gf_imr.csv") |> DataFrame
+migflow_allstockdemo = CSV.File("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Abel_data/gf_imr.csv") |> DataFrame
 # Using Abel and Cohen (2019)
 migflow_alldata = CSV.File(joinpath(@__DIR__, "../data/migflow_all/ac19.csv")) |> DataFrame
 
@@ -23,7 +23,7 @@ migflow_ar = migflow_alldata[:,[:year0, :orig, :dest, :da_pb_closed]]
 
 
 ########################## Prepare population data from the Wittgenstein Centre, based on historical data from the WPP 2019 ##################################
-pop_allvariants = CSV.File("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Pop_hist_data/WPP2019.csv") |> DataFrame
+pop_allvariants = CSV.File("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Pop_hist_data/WPP2019.csv") |> DataFrame
 # We use the Medium variant, the most commonly used. Unit: thousands
 pop = @from i in pop_allvariants begin
     @where i.Variant == "Medium" && i.Time < 2016 
@@ -297,17 +297,17 @@ rr3 = reg(gravity_ar, @formula(mig_ratio_tot ~ density_ratio + ypc_ratio + dista
 rr4 = reg(gravity_ar, @formula(mig_ratio_tot ~ density_ratio + ypc_ratio + distance + remshare + remcost + comofflang + fe(orig) + fe(dest) + fe(year)), Vcov.cluster(:orig, :dest), save=true)
 rr5 = reg(gravity, @formula(flow_Abel ~ pop_orig + pop_dest + ypc_orig + ypc_dest + distance + remshare + remcost + comofflang + fe(year)), Vcov.cluster(:orig, :dest), save=true)
 
-regtable(rr1, rr2, rr3, rr4, rr5; render = LatexTable(),regression_statistics=[:nobs, :r2, :r2_within])     
+regtable(rr1, rr2, rr3, rr4, rr5; regression_statistics=[:nobs, :r2, :r2_within])     
 
 beta = DataFrame(
     regtype = ["reg_ar_yfe","reg_ar_odyfe","reg_abel_yfe"],
     b1 = [0.686,0.746,0.575],       # pop_orig
-    b2 = [0.681,-0.748,0.602],       # pop_dest
+    b2 = [0.681,-0.748,0.603],       # pop_dest
     b4 = [0.428,0.155,0.105],       # ypc_orig
-    b5 = [0.837,-0.004,0.791],       # ypc_dest
+    b5 = [0.838,-0.004,0.791],       # ypc_dest
     b7 = [-1.291,-1.472,-1.038],       # distance
     b8 = [0.155,0.190,0.090],       # remshare
-    b9 = [-9.418,-12.894,-15.333],       # remcost
+    b9 = [-8.382,-11.706,-14.203],       # remcost
     b10 = [1.727,1.606,1.439]     # comofflang
 )
 beta_ratio = DataFrame(
@@ -316,7 +316,7 @@ beta_ratio = DataFrame(
     b6 = [0.145,-0.088],       # ypc_ratio
     b7 = [-1.166,-1.472],       # distance
     b8 = [-0.053,0.190],       # remshare
-    b9 = [-10.532,-12.891],       # remcost
+    b9 = [-8.860,-11.703],       # remcost
     b10 = [1.217,1.607]       # comofflang
 )
 
@@ -361,9 +361,9 @@ CSV.write(joinpath(@__DIR__,"../data/gravity_calib/fe_ratio_ar_yfe.csv"), fe_rat
 CSV.write(joinpath(@__DIR__,"../data/gravity_calib/fe_ratio_ar_odyfe.csv"), fe_ratio_ar_odyfe)
 CSV.write(joinpath(@__DIR__,"../data/gravity_calib/fe_abel_yfe.csv"), fe_abel_yfe)
 
-CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/gravity.csv", gravity)
-CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/gravity_ar.csv", gravity_ar)
-CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/data_ar.csv", data_ar)
+CSV.write("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/gravity.csv", gravity)
+CSV.write("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/gravity_ar.csv", gravity_ar)
+CSV.write("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/data_ar.csv", data_ar)
 
 # Main specification: year fixed effects (reg_ar_yfe). All resulting files and graphs indexed _6.
 # Robustness runs: origin/destination/year fixed effects (reg_ar_odyfe). All resulting files and graphs indexed _7.
