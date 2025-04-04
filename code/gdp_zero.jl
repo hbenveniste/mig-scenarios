@@ -7,11 +7,11 @@ using Statistics, Query
 # Original version:
 # Source:  Wittgenstein Center (WIC) Population and Human Capital Projections, version v.14 (February 2025). 
 # https://zenodo.org/records/14718294
-ssp1 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP1_V14.csv", DataFrame)
-ssp2 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP2_V14.csv", DataFrame)
-ssp3 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP3_V14.csv", DataFrame)
-ssp4 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP4_V14.csv", DataFrame)
-ssp5 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP5_V14.csv", DataFrame)
+ssp1 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP1_V14.csv", DataFrame)
+ssp2 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP2_V14.csv", DataFrame)
+ssp3 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP3_V14.csv", DataFrame)
+ssp4 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP4_V14.csv", DataFrame)
+ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/PROJresult_AGE_SSP5_V14.csv", DataFrame)
 
 ssp1.scen = repeat(["SSP1"], size(ssp1,1))
 ssp2.scen = repeat(["SSP2"], size(ssp2,1))
@@ -26,11 +26,11 @@ ssp[!,:mig] = ssp[!,:emi] .- ssp[!,:imm]
 
 # Version for zero migration
 # Provided by Samir KC in March 2025
-mig0_ssp1 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x05ssp1_emort_efert_0mig.csv", DataFrame)
-mig0_ssp2 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x01ssp2_emort_efert_0mig.csv", DataFrame)
-mig0_ssp3 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x07ssp3_emort_efert_0mig.csv", DataFrame)
-mig0_ssp4 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x08ssp4_emort_efert_0mig.csv", DataFrame)
-mig0_ssp5 = CSV.read("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x06ssp5_emort_efert_0mig.csv", DataFrame)
+mig0_ssp1 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x05ssp1_emort_efert_0mig.csv", DataFrame)
+mig0_ssp2 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x01ssp2_emort_efert_0mig.csv", DataFrame)
+mig0_ssp3 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x07ssp3_emort_efert_0mig.csv", DataFrame)
+mig0_ssp4 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x08ssp4_emort_efert_0mig.csv", DataFrame)
+mig0_ssp5 = CSV.read("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/Samir_data/res_x06ssp5_emort_efert_0mig.csv", DataFrame)
 
 mig0_ssp1.scen = repeat(["SSP1"], size(mig0_ssp1,1))
 mig0_ssp2.scen = repeat(["SSP2"], size(mig0_ssp2,1))
@@ -714,5 +714,5 @@ end
 
 ####################################### Write output files with results ############################################################################
 CSV.write(joinpath(@__DIR__, "../results/sspall_6_update.csv"), sspall)
-CSV.write("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/migflow_6_update.csv", migflow)
-CSV.write("C:/Users/Helene/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/remittances_6_update.csv", remittances)
+CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/migflow_6_update.csv", migflow)
+CSV.write("C:/Users/hmrb/Stanford_Benveniste Dropbox/Hélène Benveniste/YSSP-IIASA/results_large/remittances_6_update.csv", remittances)
